@@ -20,26 +20,23 @@ namespace ASCII_art
             this.imageLoc = imageLoc;
         }
 
-        public void GenerateASCII(string saveLoc)
+        public string GenerateASCII()
         {
             var bmp = new Bitmap(imageLoc);
-            using (var writer = new StreamWriter(saveLoc))
+            StringBuilder sb = new StringBuilder();
+            for (var y = 0; y < bmp.Height; y++)
             {
-                StringBuilder sb = new StringBuilder();
-                for (var y = 0; y < bmp.Height; y++)
+                for (var x = 0; x < bmp.Width; x++)
                 {
-                    for (var x = 0; x < bmp.Width; x++)
-                    {
-                        var color = bmp.GetPixel(x, y);
-                        var hsp = RGBToHSP(color);
-                        var index = hsp / 255 * (charRamp.Length - 1);
-                        var pixel = charRamp[(int)index];
-                        sb.Append(pixel);
-                    }
-                    sb.Append(Environment.NewLine);
+                    var color = bmp.GetPixel(x, y);
+                    var hsp = RGBToHSP(color);
+                    var index = hsp / 255 * (charRamp.Length - 1);
+                    var pixel = charRamp[(int)index];
+                    sb.Append(pixel);
                 }
-                writer.Write(sb.ToString());
+                sb.Append(Environment.NewLine);
             }
+            return sb.ToString();
         }
 
         //http://alienryderflex.com/hsp.html
