@@ -14,21 +14,34 @@ namespace ASCII_art
 
         public string GenerateASCII(string imageLoc)
         {
-            var bmp = new Bitmap(imageLoc);
-            StringBuilder sb = new StringBuilder();
-            for (var y = 0; y < bmp.Height; y++)
+            var grayScaled = Grayscale(imageLoc);
+            var sb = new StringBuilder();
+
+            for (var y = 0; y < grayScaled.Height; y++)
             {
-                for (var x = 0; x < bmp.Width; x++)
+                for (var x = 0; x < grayScaled.Width; x++)
                 {
-                    var color = bmp.GetPixel(x, y);
-                    var hsp = RGBToHSP(color);
-                    var index = hsp / 255 * (charRamp.Length - 1);
-                    var pixel = charRamp[(int)index];
-                    sb.Append(pixel);
+                    var index = (double)grayScaled.GetPixel(x, y).R / 255 * (charRamp.Length - 1);
+                    sb.Append(charRamp[(int)index]);
                 }
                 sb.Append(Environment.NewLine);
             }
             return sb.ToString();
+        }
+
+        public Bitmap Grayscale(string imgLoc)
+        {
+            Bitmap grayScaled = new Bitmap(imgLoc);
+            for (var y = 0; y < grayScaled.Height; y++)
+            {
+                for (var x = 0; x < grayScaled.Width; x++)
+                {
+                    var color = grayScaled.GetPixel(x, y);
+                    var hsp = (int)RGBToHSP(color);
+                    grayScaled.SetPixel(x, y, Color.FromArgb(hsp, hsp, hsp));
+                }
+            }
+            return grayScaled;
         }
 
         /**

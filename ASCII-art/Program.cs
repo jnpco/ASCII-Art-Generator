@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing;
+using System.IO;
 
 namespace ASCII_art
 {
@@ -10,6 +9,12 @@ namespace ASCII_art
     {
         static void Main(string[] args)
         {
+            string ascii = new ASCIIGenerator().GenerateASCII(args[0]);
+
+            using (StreamWriter wrtr = new StreamWriter(args[1]))
+            {
+                wrtr.Write(ascii);
+            }
         }
     }
 }
