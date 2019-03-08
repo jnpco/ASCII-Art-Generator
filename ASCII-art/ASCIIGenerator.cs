@@ -10,8 +10,11 @@ namespace ASCII_art
 {
     class ASCIIGenerator
     {
-        string imageLoc;
+        //"$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,"^`'. "
+        readonly string charRamp = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\" ^`'. ";
 
+        string imageLoc;
+        
         public ASCIIGenerator(string imageLoc)
         {
             this.imageLoc = imageLoc;
@@ -27,6 +30,7 @@ namespace ASCII_art
                     for (var x = 0; x < bmp.Width; x++)
                     {
                         var color = bmp.GetPixel(x, y);
+                        var hsp = RGBToHSP(color);
                     }
                 }
             }
