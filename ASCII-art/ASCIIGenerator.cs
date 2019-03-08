@@ -1,26 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Drawing;
-using System.IO;
 
 namespace ASCII_art
 {
     class ASCIIGenerator
     {
-        //"$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,"^`'. "
+        /**
+         * http://paulbourke.net/dataformats/asciiart/
+         * "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,"^`'. "
+         */
         readonly string charRamp = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\" ^`'. ";
 
-        string imageLoc;
-        
-        public ASCIIGenerator(string imageLoc)
-        {
-            this.imageLoc = imageLoc;
-        }
-
-        public string GenerateASCII()
+        public string GenerateASCII(string imageLoc)
         {
             var bmp = new Bitmap(imageLoc);
             StringBuilder sb = new StringBuilder();
@@ -39,7 +31,9 @@ namespace ASCII_art
             return sb.ToString();
         }
 
-        //http://alienryderflex.com/hsp.html
+        /**
+         * http://alienryderflex.com/hsp.html
+         */
         private double RGBToHSP(Color color)
         {
             return Math.Sqrt(
