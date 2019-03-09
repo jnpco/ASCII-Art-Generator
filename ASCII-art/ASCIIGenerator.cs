@@ -43,7 +43,7 @@ namespace ASCII_art
          */
         public string GenerateASCII(Bitmap bmp)
         {
-            return GenerateASCII(bmp, bmp.Width);
+            return ImageToASCII(Grayscale(bmp));
         }
 
         /**
