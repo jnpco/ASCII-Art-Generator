@@ -29,9 +29,20 @@ namespace ASCII_art
             return sb.ToString();
         }
 
-        public Bitmap Grayscale(string imgLoc)
+        /**
+         * Creates a new bitmap and sends it to the Grayscale method.
+         */
+        private Bitmap Grayscale(string imgLoc)
         {
-            Bitmap grayScaled = new Bitmap(imgLoc);
+            return Grayscale(new Bitmap(imgLoc));
+        }
+
+        /**
+         * Creates a new bitmap from the bitmap argument, which is helpful to avoid indexed bitmaps.
+         */
+        private Bitmap Grayscale(Bitmap bmp)
+        {
+            var grayScaled = new Bitmap(bmp);
             for (var y = 0; y < grayScaled.Height; y++)
             {
                 for (var x = 0; x < grayScaled.Width; x++)
