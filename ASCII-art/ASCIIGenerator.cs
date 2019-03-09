@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 
 namespace ASCII_art
 {
@@ -12,16 +13,16 @@ namespace ASCII_art
          */
         readonly string charRamp = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\" ^`'. ";
 
-        public string GenerateASCII(string imageLoc)
+        public string GenerateASCII(string imageLoc, int width)
         {
-            var grayScaled = Grayscale(imageLoc);
+            var processedImage = ProcessImage(imageLoc, width);
             var sb = new StringBuilder();
 
-            for (var y = 0; y < grayScaled.Height; y++)
+            for (var y = 0; y < processedImage.Height; y++)
             {
-                for (var x = 0; x < grayScaled.Width; x++)
+                for (var x = 0; x < processedImage.Width; x++)
                 {
-                    var index = (double)grayScaled.GetPixel(x, y).R / 255 * (charRamp.Length - 1);
+                    var index = (double)processedImage.GetPixel(x, y).B / 255 * (charRamp.Length - 1);
                     sb.Append(charRamp[(int)index]);
                 }
                 sb.Append(Environment.NewLine);
@@ -32,9 +33,9 @@ namespace ASCII_art
         /**
          * Creates a new bitmap and sends it to the Grayscale method.
          */
-        private Bitmap Grayscale(string imgLoc)
+        private Bitmap ProcessImage(string imgLoc, int width)
         {
-            return Grayscale(new Bitmap(imgLoc));
+            return Grayscale(ResizeImage(new Bitmap(imgLoc), width));
         }
 
         /**
@@ -65,6 +66,27 @@ namespace ASCII_art
                 color.G * color.G * 0.587 +
                 color.B * color.B * 0.114
                 );
+        }
+
+        private Bitmap ResizeImage(Bitmap bmp, int width)
+        {
+            var ratio = (double)bmp.Height / bmp.Width;
+            var height = (int)(width * ratio);
+
+            var resized = new Bitmap(width, height);
+
+            using (var g = Graphics.FromImage(resized))
+            {
+                g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                g.SmoothingMode = SmoothingMode.HighQuality;
+                g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                g.CompositingQuality = CompositingQuality.HighQuality;
+
+                g.Clear(Color.White);
+                g.DrawImage(bmp, 0, 0, width, height);
+            }
+
+            return resized;
         }
     }
 }
