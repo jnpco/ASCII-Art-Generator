@@ -9,9 +9,28 @@ namespace ASCII_art
     {
         /**
          * http://paulbourke.net/dataformats/asciiart/
+         * "Ws@^/\";,. "
          * "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,"^`'. "
          */
-        readonly string charRamp = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\" ^`'. ";
+        string charRamp;
+
+        /**
+         * Default constructor.
+         * Sets the default charRamp.
+         */
+        public ASCIIGenerator()
+        {
+            this.charRamp = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\" ^`'. ";
+        }
+
+        /**
+         * Constructor that accepts a charRamp.
+         * From darkest value.
+         */
+        public ASCIIGenerator(string charRamp)
+        {
+            this.charRamp = charRamp;
+        }
 
         public string GenerateASCII(string imageLoc)
         {
