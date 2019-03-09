@@ -9,11 +9,15 @@ namespace ASCII_art
     class ASCIIGenerator
     {
         /**
-         * http://paulbourke.net/dataformats/asciiart/
          * "Ws@^/\";,. "
          * "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,"^`'. "
+         * http://paulbourke.net/dataformats/asciiart/
          */
-        string charRamp;
+        public string CharRamp { get; set; }
+
+        /**
+         * Set to true if background is black (cmd, black terminal, black editor etc.).
+         */
         public bool BlackBG { get; set; }
 
         /**
@@ -22,28 +26,32 @@ namespace ASCII_art
          */
         public ASCIIGenerator()
         {
-            this.charRamp = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\" ^`'. ";
+            this.CharRamp = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\" ^`'. ";
         }
 
         /**
          * Constructor that accepts a charRamp.
          * From darkest value.
          */
-        public ASCIIGenerator(string charRamp)
+        public ASCIIGenerator(string CharRamp)
         {
-            this.charRamp = charRamp;
+            this.CharRamp = CharRamp;
+        }
+        
+        /**
+         * Creates a new bitmap and sends it to the Grayscale method.
+         */
+        public string GenerateASCII(Bitmap bmp)
+        {
+            return GenerateASCII(bmp, bmp.Width);
         }
 
-
-        public string GenerateASCII(string imageLoc)
+        /**
+         * Creates a new bitmap and sends it to the Grayscale method.
+         */
+        public string GenerateASCII(Bitmap bmp, int width)
         {
-            return ImageToASCII(ProcessImage(imageLoc));
-        }
-
-
-        public string GenerateASCII(string imageLoc, int width)
-        {
-            return ImageToASCII(ProcessImage(imageLoc, width));
+            return ImageToASCII(Grayscale(ResizeImage(bmp, width)));
         }
 
         /**
@@ -52,7 +60,7 @@ namespace ASCII_art
          */
         private string ImageToASCII(Bitmap processedImage)
         {
-            string charRamp = BlackBG ? new string(this.charRamp.Reverse().ToArray()) : this.charRamp;
+            string CharRamp = BlackBG ? new string(this.CharRamp.Reverse().ToArray()) : this.CharRamp;
 
             var sb = new StringBuilder();
 
@@ -60,31 +68,14 @@ namespace ASCII_art
             {
                 for (var x = 0; x < processedImage.Width; x++)
                 {
-                    var index = (double)processedImage.GetPixel(x, y).B / 255 * (charRamp.Length - 1);
-                    sb.Append(charRamp[(int)index]);
+                    var index = (double)processedImage.GetPixel(x, y).B / 255 * (CharRamp.Length - 1);
+                    sb.Append(CharRamp[(int)index]);
                 }
                 sb.Append(Environment.NewLine);
             }
             return sb.ToString();
         }
-
-        /**
-         * Creates a new bitmap and sends it to the Grayscale method.
-         */
-        private Bitmap ProcessImage(string imgLoc)
-        {
-            var bmp = new Bitmap(imgLoc);
-            return ProcessImage(imgLoc, bmp.Width);
-        }
-
-        /**
-         * Creates a new bitmap and sends it to the Grayscale method.
-         */
-        private Bitmap ProcessImage(string imgLoc, int width)
-        {
-            return Grayscale(ResizeImage(new Bitmap(imgLoc), width));
-        }
-
+        
         /**
          * Creates a new bitmap from the bitmap argument, which is helpful to avoid indexed bitmaps.
          */
