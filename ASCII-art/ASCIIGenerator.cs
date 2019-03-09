@@ -2,6 +2,7 @@
 using System.Text;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Linq;
 
 namespace ASCII_art
 {
@@ -13,6 +14,7 @@ namespace ASCII_art
          * "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,"^`'. "
          */
         string charRamp;
+        public bool BlackBG { get; set; }
 
         /**
          * Default constructor.
@@ -32,10 +34,12 @@ namespace ASCII_art
             this.charRamp = charRamp;
         }
 
+
         public string GenerateASCII(string imageLoc)
         {
             return ImageToASCII(ProcessImage(imageLoc));
         }
+
 
         public string GenerateASCII(string imageLoc, int width)
         {
@@ -44,9 +48,12 @@ namespace ASCII_art
 
         /**
          * Generates ASCII from image.
+         * Reverses string if BlackBG
          */
         private string ImageToASCII(Bitmap processedImage)
         {
+            string charRamp = BlackBG ? new string(this.charRamp.Reverse().ToArray()) : this.charRamp;
+
             var sb = new StringBuilder();
 
             for (var y = 0; y < processedImage.Height; y++)
