@@ -26,7 +26,7 @@ namespace ASCII_art
         /**
          * Generates ASCII from image.
          */
-        public string ImageToASCII(Bitmap processedImage)
+        private string ImageToASCII(Bitmap processedImage)
         {
             var sb = new StringBuilder();
 
@@ -45,12 +45,15 @@ namespace ASCII_art
         /**
          * Creates a new bitmap and sends it to the Grayscale method.
          */
-        public Bitmap ProcessImage(string imgLoc)
+        private Bitmap ProcessImage(string imgLoc)
         {
             var bmp = new Bitmap(imgLoc);
             return ProcessImage(imgLoc, bmp.Width);
         }
 
+        /**
+         * Creates a new bitmap and sends it to the Grayscale method.
+         */
         private Bitmap ProcessImage(string imgLoc, int width)
         {
             return Grayscale(ResizeImage(new Bitmap(imgLoc), width));
@@ -76,6 +79,7 @@ namespace ASCII_art
 
         /**
          * http://alienryderflex.com/hsp.html
+         * Converts rgb to grayscale using hsp color model.
          */
         private double RGBToHSP(Color color)
         {
@@ -86,6 +90,9 @@ namespace ASCII_art
                 );
         }
 
+        /**
+         * Resizes image keeping aspect ratio.
+         */
         private Bitmap ResizeImage(Bitmap bmp, int width)
         {
             var ratio = (double)bmp.Height / bmp.Width;
