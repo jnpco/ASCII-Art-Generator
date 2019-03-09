@@ -13,9 +13,21 @@ namespace ASCII_art
          */
         readonly string charRamp = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\" ^`'. ";
 
+        public string GenerateASCII(string imageLoc)
+        {
+            return ImageToASCII(ProcessImage(imageLoc));
+        }
+
         public string GenerateASCII(string imageLoc, int width)
         {
-            var processedImage = ProcessImage(imageLoc, width);
+            return ImageToASCII(ProcessImage(imageLoc, width));
+        }
+
+        /**
+         * Generates ASCII from image.
+         */
+        public string ImageToASCII(Bitmap processedImage)
+        {
             var sb = new StringBuilder();
 
             for (var y = 0; y < processedImage.Height; y++)
@@ -33,6 +45,12 @@ namespace ASCII_art
         /**
          * Creates a new bitmap and sends it to the Grayscale method.
          */
+        public Bitmap ProcessImage(string imgLoc)
+        {
+            var bmp = new Bitmap(imgLoc);
+            return ProcessImage(imgLoc, bmp.Width);
+        }
+
         private Bitmap ProcessImage(string imgLoc, int width)
         {
             return Grayscale(ResizeImage(new Bitmap(imgLoc), width));
