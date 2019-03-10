@@ -83,5 +83,24 @@ namespace ASCII_art
             }
             return sb.ToString();
         }
+
+        public Bitmap ASCIIToImage(string ascii)
+        {
+            Font font = new Font("Lucida Console", 6);
+
+            var asciiLines = ascii.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+
+            var dim = Graphics.FromImage(new Bitmap(1, 1)).MeasureString(ascii, font);
+            var asciiImage = new Bitmap((int)dim.Width, (int)dim.Height);
+
+            using (Graphics g = Graphics.FromImage(asciiImage))
+            {
+                for (int i = 0; i < asciiLines.Length; i++)
+                {
+                    g.DrawString(asciiLines[i], font, new SolidBrush(Color.Black), 0, i * font.Height);
+                }
+            }
+            return asciiImage;
+        }
     }
 }
