@@ -36,7 +36,8 @@ namespace ASCII_art
         }
         
         /**
-         * Creates a new bitmap and sends it to the Grayscale method.
+         * Returns an ascii string from the processed image. 
+         * Processesing done: Grayscaling.
          */
         public string GenerateASCII(Bitmap bmp)
         {
@@ -44,13 +45,23 @@ namespace ASCII_art
         }
 
         /**
-         * Creates a new bitmap and sends it to the Grayscale method.
+         * Returns an ascii string from the processed image. 
+         * Processesing done: Grayscaling, Resizing.
          */
         public string GenerateASCII(Bitmap bmp, int width)
         {
             return ImageToASCII(ImageUtils.Grayscale(ImageUtils.ResizeImage(bmp, width)));
         }
-        
+
+        /**
+         * Returns an ascii string from the processed image. 
+         * Processesing done: Grayscaling, Resizing, Contrast.
+         */
+        public string GenerateASCII(Bitmap bmp, int width, int contrastThreshold)
+        {
+            return ImageToASCII(ImageUtils.Grayscale(ImageUtils.ResizeImage(ImageUtils.SetContrast(bmp, contrastThreshold), width)));
+        }
+
         /**
          * Generates ASCII from image.
          * Reverses string if BlackBG
