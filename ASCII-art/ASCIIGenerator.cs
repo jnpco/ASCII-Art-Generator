@@ -84,10 +84,38 @@ namespace ASCII_art
             return sb.ToString();
         }
 
+        /**
+         * Creates an image from ascii string.
+         */
         public Bitmap ASCIIToImage(string ascii)
         {
             Font font = new Font("Lucida Console", 6);
+            var dim = Graphics.FromImage(new Bitmap(1, 1)).MeasureString(ascii, font);
+            return ASCIIToImage(ascii, (int)dim.Width);
+        }
 
+        /**
+         * Creates an image from ascii string and resizes it.
+         */
+        public Bitmap ASCIIToImage(string ascii, int width)
+        {
+            Font font = new Font("Lucida Console", 6);
+            return ASCIIToImage(ascii, width, font);
+        }
+
+        /**
+         * Creates an image from ascii string with specified font and resizes it.
+         */
+        public Bitmap ASCIIToImage(string ascii, int width, Font font)
+        {
+            return ASCIIToImage(ascii, width, font, Color.Black);
+        }
+
+        /**
+         * Creates an image from ascii string with specified font and color, then resizes it.
+         */
+        public Bitmap ASCIIToImage(string ascii, int width, Font font, Color color)
+        {
             var asciiLines = ascii.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
 
             var dim = Graphics.FromImage(new Bitmap(1, 1)).MeasureString(ascii, font);
@@ -97,10 +125,10 @@ namespace ASCII_art
             {
                 for (int i = 0; i < asciiLines.Length; i++)
                 {
-                    g.DrawString(asciiLines[i], font, new SolidBrush(Color.Black), 0, i * font.Height);
+                    g.DrawString(asciiLines[i], font, new SolidBrush(color), 0, i * font.Height);
                 }
             }
-            return asciiImage;
+            return ImageUtils.ResizeImage(asciiImage, width);
         }
     }
 }
