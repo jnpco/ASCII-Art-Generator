@@ -20,11 +20,6 @@ namespace ASCII_art
         public bool BlackBG { get; set; }
 
         /**
-         * Image utility class.
-         */
-        private ImageUtils imgUtils;
-
-        /**
          * Default constructor.
          * Sets the default charRamp.
          */
@@ -38,7 +33,6 @@ namespace ASCII_art
         public ASCIIGenerator(string CharRamp)
         {
             this.CharRamp = CharRamp;
-            imgUtils = new ImageUtils();
         }
         
         /**
@@ -46,7 +40,7 @@ namespace ASCII_art
          */
         public string GenerateASCII(Bitmap bmp)
         {
-            return ImageToASCII(imgUtils.Grayscale(bmp));
+            return ImageToASCII(ImageUtils.Grayscale(bmp));
         }
 
         /**
@@ -54,7 +48,7 @@ namespace ASCII_art
          */
         public string GenerateASCII(Bitmap bmp, int width)
         {
-            return ImageToASCII(imgUtils.Grayscale(imgUtils.ResizeImage(bmp, width)));
+            return ImageToASCII(ImageUtils.Grayscale(ImageUtils.ResizeImage(bmp, width)));
         }
         
         /**
