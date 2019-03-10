@@ -68,7 +68,7 @@ namespace ASCII_art
          */
         private string ImageToASCII(Bitmap processedImage)
         {
-            string CharRamp = BlackBG ? new string(this.CharRamp.Reverse().ToArray()) : this.CharRamp;
+            var CharRamp = BlackBG ? new string(this.CharRamp.Reverse().ToArray()) : this.CharRamp;
 
             var sb = new StringBuilder();
 
@@ -89,7 +89,7 @@ namespace ASCII_art
          */
         public Bitmap ASCIIToImage(string ascii)
         {
-            Font font = new Font("Lucida Console", 6);
+            var font = new Font("Lucida Console", 6);
             var dim = Graphics.FromImage(new Bitmap(1, 1)).MeasureString(ascii, font);
             return ASCIIToImage(ascii, (int)dim.Width);
         }
@@ -99,7 +99,7 @@ namespace ASCII_art
          */
         public Bitmap ASCIIToImage(string ascii, int width)
         {
-            Font font = new Font("Lucida Console", 6);
+            var font = new Font("Lucida Console", 6);
             return ASCIIToImage(ascii, width, font);
         }
 

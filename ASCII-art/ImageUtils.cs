@@ -71,15 +71,19 @@ namespace ASCII_art
         public static Bitmap Grayscale(Bitmap bmp)
         {
             var grayScaled = new Bitmap(bmp);
-            for (var y = 0; y < grayScaled.Height; y++)
+            var lockedBitmap = new LockBitmap(grayScaled);
+            lockedBitmap.LockBits();
+
+            for (var y = 0; y < lockedBitmap.Height; y++)
             {
-                for (var x = 0; x < grayScaled.Width; x++)
+                for (var x = 0; x < lockedBitmap.Width; x++)
                 {
-                    var color = grayScaled.GetPixel(x, y);
+                    var color = lockedBitmap.GetPixel(x, y);
                     var hsp = (int)RGBToHSP(color);
-                    grayScaled.SetPixel(x, y, Color.FromArgb(hsp, hsp, hsp));
+                    lockedBitmap.SetPixel(x, y, Color.FromArgb(hsp, hsp, hsp));
                 }
             }
+            lockedBitmap.UnlockBits();
             return grayScaled;
         }
 
