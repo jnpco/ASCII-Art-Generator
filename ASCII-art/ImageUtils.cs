@@ -4,11 +4,17 @@ using System.Drawing;
 
 namespace ASCII_art
 {
+    /// <summary>
+    /// Utility class for image processing.
+    /// </summary>
     class ImageUtils
     {
-        /**
-         * Resizes image keeping aspect ratio.
-         */
+        /// <summary>
+        /// Resizes an image to a specified width.
+        /// </summary>
+        /// <param name="bmp"> Source of the bitmap to be modified and returned. </param>
+        /// <param name="width"> New width of the returned bitmap. </param>
+        /// <returns> A new resized bitmap based on the param. </returns>
         public static Bitmap ResizeImage(Bitmap bmp, int width)
         {
             var ratio = (double)bmp.Height / bmp.Width;
@@ -30,10 +36,13 @@ namespace ASCII_art
             return resized;
         }
 
-        /**
-         * Sets Contrast of image.
-         * threshold should be a value between -100 and 100
-         */
+        /// <summary>
+        /// Sets Contrast of image using lockbits.
+        /// Note that the threshold should be a value between -100 and 100.
+        /// </summary>
+        /// <param name="bmp"> Source of the bitmap to be modified and returned. </param>
+        /// <param name="threshold"> Values between -100 and 100, with 0 being the unmodified one.</param>
+        /// <returns> A new bitmap with the specified contrast level. </returns>
         public static Bitmap SetContrast(Bitmap bmp, int threshold)
         {
             var modifiedContrast = new Bitmap(bmp);
@@ -65,9 +74,11 @@ namespace ASCII_art
             return modifiedContrast;
         }
 
-        /**
-         * Creates a new bitmap from the bitmap argument, which is helpful to avoid indexed bitmaps.
-         */
+        /// <summary>
+        /// Grayscales an image using lockbits.
+        /// </summary>
+        /// <param name="bmp"> Source of the bitmap to be resized and returned. </param>
+        /// <returns> A new grayscaled bitmap. </returns>
         public static Bitmap Grayscale(Bitmap bmp)
         {
             var grayScaled = new Bitmap(bmp);
@@ -87,10 +98,12 @@ namespace ASCII_art
             return grayScaled;
         }
 
-        /**
-         * http://alienryderflex.com/hsp.html
-         * Converts rgb to grayscale using hsp color model.
-         */
+        /// <summary>
+        /// Calculates the brightness of a pixel.
+        /// http://alienryderflex.com/hsp.html
+        /// </summary>
+        /// <param name="color"> Color to be calculated. </param>
+        /// <returns></returns>
         public static double RGBToHSP(Color color)
         {
             return Math.Sqrt(
