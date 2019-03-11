@@ -7,65 +7,75 @@ namespace ASCII_art
 {
     class ASCIIGenerator
     {
-        /**
+
+        /*
+         * Sample charRamp.
          * "Ws@^/\";,. "
          * "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,"^`'. "
-         * http://paulbourke.net/dataformats/asciiart/
          */
+
+        /// <summary>
+        /// Characters to be used in the ascii string. Characters should go from darkest to brightest.
+        /// <para>http://paulbourke.net/dataformats/asciiart/</para>
+        /// </summary>
         public string CharRamp { get; set; }
 
-        /**
-         * Set to true if background is black (cmd, black terminal, black editor etc.).
-         */
+        /// <summary>
+        /// Set to true if background is black (cmd, black terminal, black editor etc.).
+        /// </summary>
         public bool BlackBG { get; set; }
-
-        /**
-         * Default constructor.
-         * Sets the default charRamp.
-         */
+        
+        /// <summary>
+        /// Default constructor.
+        /// Sets the default charRamp.
+        /// </summary>
         public ASCIIGenerator() 
-            : this("$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\" ^`'. ") {}
+            : this("$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\" ^`'. ") { }
 
-        /**
-         * Constructor that accepts a charRamp.
-         * From darkest value.
-         */
+        /// <summary>
+        /// Constructor that accepts a custom charRamp.
+        /// </summary>
+        /// <param name="CharRamp"> Initializes the charRamp property. </param>
         public ASCIIGenerator(string CharRamp)
         {
             this.CharRamp = CharRamp;
         }
-        
-        /**
-         * Returns an ascii string from the processed image. 
-         * Processesing done: Grayscaling.
-         */
+
+        /// <summary>
+        ///  Processesing done: Grayscaling.
+        /// </summary>
+        /// <param name="bmp"> Source of the bitmap to be processed and passed to the ImageToASCII method. </param>
+        /// <returns> Ascii string from the processed image. </returns>
         public string GenerateASCII(Bitmap bmp)
         {
             return ImageToASCII(ImageUtils.Grayscale(bmp));
         }
 
-        /**
-         * Returns an ascii string from the processed image. 
-         * Processesing done: Grayscaling, Resizing.
-         */
+        /// <summary>
+        ///  Processesing done: Grayscaling, Resizing.
+        /// </summary>
+        /// <param name="bmp"> Source of the bitmap to be processed and passed to the ImageToASCII method. </param>
+        /// <returns> Ascii string from the processed image. </returns>
         public string GenerateASCII(Bitmap bmp, int width)
         {
             return ImageToASCII(ImageUtils.Grayscale(ImageUtils.ResizeImage(bmp, width)));
         }
 
-        /**
-         * Returns an ascii string from the processed image. 
-         * Processesing done: Grayscaling, Resizing, Contrast.
-         */
+        /// <summary>
+        ///  Processesing done: Grayscaling, Resizing, Contrast Adjustment.
+        /// </summary>
+        /// <param name="bmp"> Source of the bitmap to be processed and passed to the ImageToASCII method. </param>
+        /// <returns> Ascii string from the processed image. </returns>
         public string GenerateASCII(Bitmap bmp, int width, int contrastThreshold)
         {
             return ImageToASCII(ImageUtils.Grayscale(ImageUtils.ResizeImage(ImageUtils.SetContrast(bmp, contrastThreshold), width)));
         }
 
-        /**
-         * Generates ASCII from image.
-         * Reverses string if BlackBG
-         */
+        /// <summary>
+        /// Method called by the GenerateASCII. Assigns each pixel to a character from the charRamp string.
+        /// </summary>
+        /// <param name="processedImage"> Processed bitmap to be converted to an ascii string.</param>
+        /// <returns> Ascii string from the processed image. </returns>
         private string ImageToASCII(Bitmap processedImage)
         {
             var CharRamp = BlackBG ? new string(this.CharRamp.Reverse().ToArray()) : this.CharRamp;
@@ -84,9 +94,12 @@ namespace ASCII_art
             return sb.ToString();
         }
 
-        /**
-         * Creates an image from ascii string.
-         */
+        /// <summary>
+        /// Generates an image from ascii string.
+        /// <para> * Note that the default generated image is approx. > 8 times larger than the source bitmap as 1 character is mapped to a pixel. </para>
+        /// </summary>
+        /// <param name="ascii"> String to be drawn to the empty bitmap </param>
+        /// <returns> An image that drawn with the ascii string. </returns>
         public Bitmap ASCIIToImage(string ascii)
         {
             var font = new Font("Lucida Console", 6);
@@ -94,26 +107,40 @@ namespace ASCII_art
             return ASCIIToImage(ascii, (int)dim.Width);
         }
 
-        /**
-         * Creates an image from ascii string and resizes it.
-         */
+        /// <summary>
+        /// Generates an image from ascii string.
+        /// </summary>
+        /// <param name="ascii"> String to be drawn to the empty bitmap </param>
+        /// <param name="width"> Width of the newly created bitmap. </param>
+        /// <returns> An image that drawn with the ascii string. </returns>
         public Bitmap ASCIIToImage(string ascii, int width)
         {
             var font = new Font("Lucida Console", 6);
             return ASCIIToImage(ascii, width, font);
         }
 
-        /**
-         * Creates an image from ascii string with specified font and resizes it.
-         */
+
+        /// <summary>
+        /// Generates an image from ascii string.
+        /// </summary>
+        /// <param name="ascii"> String to be drawn to the empty bitmap </param>
+        /// <param name="width"> Width of the newly created bitmap. </param>
+        /// <param name="font"> Font to be set when drawing the ascii string. <para> * Use monospaced fonts only. </para></param>
+        /// <returns> An image that drawn with the ascii string. </returns>
         public Bitmap ASCIIToImage(string ascii, int width, Font font)
         {
             return ASCIIToImage(ascii, width, font, Color.Black);
         }
 
-        /**
-         * Creates an image from ascii string with specified font and color, then resizes it.
-         */
+
+        /// <summary>
+        /// Generates an image from ascii string.
+        /// </summary>
+        /// <param name="ascii"> String to be drawn to the empty bitmap </param>
+        /// <param name="width"> Width of the newly created bitmap. </param>
+        /// <param name="font"> Font to be set when drawing the ascii string. <para> * Use monospaced fonts only. </para></param>
+        /// <param name="color"> Font color. </param>
+        /// <returns> An image that drawn with the ascii string. </returns>
         public Bitmap ASCIIToImage(string ascii, int width, Font font, Color color)
         {
             var asciiLines = ascii.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
