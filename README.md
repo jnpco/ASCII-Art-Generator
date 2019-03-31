@@ -21,4 +21,8 @@ Grayscaling and constrast adjustment methods use Lockbits instead of getPixels f
 
 [Samples folder](https://github.com/jnpco/ASCII-art/tree/master/ASCII-art/Demo/Samples)
 
-----Planning to make a web api soon. Most probably using AWS Lambda (May convert api to cpp for faster execution speed).
+- [ ] Make a web api. Most probably using AWS Lambda.
+- [ ] Add limits to img sizes.
+- [ ] Add color options for html.
+- [ ] Fix aspect ratio.
+- [ ] Convert app to cpp to increase execution speed.
