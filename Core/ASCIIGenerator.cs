@@ -3,9 +3,9 @@ using System.Text;
 using System.Drawing;
 using System.Linq;
 
-namespace ASCII_art
+namespace Core
 {
-    class ASCIIGenerator
+    public class ASCIIGenerator
     {
 
         /*

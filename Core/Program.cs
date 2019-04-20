@@ -1,7 +1,7 @@
 using System.Drawing;
 using System.IO;
 
-namespace ASCII_art
+namespace Core
 {
     class Program
     {

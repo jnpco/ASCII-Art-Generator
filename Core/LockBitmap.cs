@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 
-namespace ASCII_art
+namespace Core
 {
     /// <summary>
     /// Source - https://www.codeproject.com/Tips/240428/Work-with-Bitmaps-Faster-in-Csharp-3

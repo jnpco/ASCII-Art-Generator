@@ -2,7 +2,7 @@
 using System.Drawing.Drawing2D;
 using System.Drawing;
 
-namespace ASCII_art
+namespace Core
 {
     /// <summary>
     /// Utility class for image processing.
