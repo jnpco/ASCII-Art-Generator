@@ -85,8 +85,15 @@
       <Name>Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Resources\Icon\" />
+    <Content Include="Resources\Icon\cancel.png" />
+    <Content Include="Resources\Icon\code.png" />
+    <Content Include="Resources\Icon\minus.png" />
+    <Content Include="Resources\Icon\notes.png" />
+    <Content Include="Resources\Icon\picture.png" />
+    <Content Include="Resources\Icon\question.png" />
+    <Content Include="Resources\Icon\start.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
