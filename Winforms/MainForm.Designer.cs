@@ -30,13 +30,7 @@
         {
             this.panel_Left = new System.Windows.Forms.Panel();
             this.grp_Output = new System.Windows.Forms.GroupBox();
-            this.pBox_HMTL = new System.Windows.Forms.PictureBox();
-            this.pBox_Image = new System.Windows.Forms.PictureBox();
-            this.pBox_Text = new System.Windows.Forms.PictureBox();
             this.grp_Settings = new System.Windows.Forms.GroupBox();
-            this.pBox_CSettingCustom = new System.Windows.Forms.PictureBox();
-            this.pBox_CSettingColored = new System.Windows.Forms.PictureBox();
-            this.pBox_CSettingGrayscale = new System.Windows.Forms.PictureBox();
             this.txt_Height = new System.Windows.Forms.TextBox();
             this.txt_FontFamily = new System.Windows.Forms.TextBox();
             this.txt_Width = new System.Windows.Forms.TextBox();
@@ -49,22 +43,21 @@
             this.slider_Contrast = new System.Windows.Forms.TrackBar();
             this.pBox_Input = new System.Windows.Forms.PictureBox();
             this.panel_Right = new System.Windows.Forms.Panel();
-            this.pBox_Enter = new System.Windows.Forms.PictureBox();
             this.pBox_Output = new System.Windows.Forms.PictureBox();
             this.text_SaveDestination = new System.Windows.Forms.TextBox();
+            this.btn_OutputText = new System.Windows.Forms.Button();
+            this.btn_OutputImage = new System.Windows.Forms.Button();
+            this.btn_OutputHTML = new System.Windows.Forms.Button();
+            this.btn_SettingsCustom = new System.Windows.Forms.Button();
+            this.btn_SettingsColored = new System.Windows.Forms.Button();
+            this.btn_SettingsGreyscaled = new System.Windows.Forms.Button();
+            this.btn_Enter = new System.Windows.Forms.Button();
             this.panel_Left.SuspendLayout();
             this.grp_Output.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pBox_HMTL)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pBox_Image)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pBox_Text)).BeginInit();
             this.grp_Settings.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pBox_CSettingCustom)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pBox_CSettingColored)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pBox_CSettingGrayscale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.slider_Contrast)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBox_Input)).BeginInit();
             this.panel_Right.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pBox_Enter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBox_Output)).BeginInit();
             this.SuspendLayout();
             // 
@@ -86,50 +79,22 @@
             // 
             // grp_Output
             // 
-            this.grp_Output.Controls.Add(this.pBox_HMTL);
-            this.grp_Output.Controls.Add(this.pBox_Image);
-            this.grp_Output.Controls.Add(this.pBox_Text);
+            this.grp_Output.Controls.Add(this.btn_OutputHTML);
+            this.grp_Output.Controls.Add(this.btn_OutputImage);
+            this.grp_Output.Controls.Add(this.btn_OutputText);
             this.grp_Output.Location = new System.Drawing.Point(37, 357);
             this.grp_Output.Name = "grp_Output";
             this.grp_Output.Size = new System.Drawing.Size(250, 85);
             this.grp_Output.TabIndex = 8;
             this.grp_Output.TabStop = false;
             this.grp_Output.Text = "Output";
-            this.grp_Output.Enter += new System.EventHandler(this.groupBox2_Enter);
-            // 
-            // pBox_HMTL
-            // 
-            this.pBox_HMTL.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pBox_HMTL.Location = new System.Drawing.Point(178, 19);
-            this.pBox_HMTL.Name = "pBox_HMTL";
-            this.pBox_HMTL.Size = new System.Drawing.Size(50, 50);
-            this.pBox_HMTL.TabIndex = 2;
-            this.pBox_HMTL.TabStop = false;
-            // 
-            // pBox_Image
-            // 
-            this.pBox_Image.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pBox_Image.Location = new System.Drawing.Point(99, 19);
-            this.pBox_Image.Name = "pBox_Image";
-            this.pBox_Image.Size = new System.Drawing.Size(50, 50);
-            this.pBox_Image.TabIndex = 1;
-            this.pBox_Image.TabStop = false;
-            // 
-            // pBox_Text
-            // 
-            this.pBox_Text.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pBox_Text.Location = new System.Drawing.Point(22, 19);
-            this.pBox_Text.Name = "pBox_Text";
-            this.pBox_Text.Size = new System.Drawing.Size(50, 50);
-            this.pBox_Text.TabIndex = 0;
-            this.pBox_Text.TabStop = false;
             // 
             // grp_Settings
             // 
-            this.grp_Settings.Controls.Add(this.pBox_CSettingCustom);
-            this.grp_Settings.Controls.Add(this.pBox_CSettingColored);
-            this.grp_Settings.Controls.Add(this.pBox_CSettingGrayscale);
+            this.grp_Settings.Controls.Add(this.btn_SettingsCustom);
             this.grp_Settings.Controls.Add(this.txt_Height);
+            this.grp_Settings.Controls.Add(this.btn_SettingsColored);
+            this.grp_Settings.Controls.Add(this.btn_SettingsGreyscaled);
             this.grp_Settings.Controls.Add(this.txt_FontFamily);
             this.grp_Settings.Controls.Add(this.txt_Width);
             this.grp_Settings.Controls.Add(this.txt_FontSize);
@@ -141,33 +106,6 @@
             this.grp_Settings.TabIndex = 4;
             this.grp_Settings.TabStop = false;
             this.grp_Settings.Text = "Settings";
-            // 
-            // pBox_CSettingCustom
-            // 
-            this.pBox_CSettingCustom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pBox_CSettingCustom.Location = new System.Drawing.Point(178, 117);
-            this.pBox_CSettingCustom.Name = "pBox_CSettingCustom";
-            this.pBox_CSettingCustom.Size = new System.Drawing.Size(50, 50);
-            this.pBox_CSettingCustom.TabIndex = 10;
-            this.pBox_CSettingCustom.TabStop = false;
-            // 
-            // pBox_CSettingColored
-            // 
-            this.pBox_CSettingColored.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pBox_CSettingColored.Location = new System.Drawing.Point(99, 117);
-            this.pBox_CSettingColored.Name = "pBox_CSettingColored";
-            this.pBox_CSettingColored.Size = new System.Drawing.Size(50, 50);
-            this.pBox_CSettingColored.TabIndex = 9;
-            this.pBox_CSettingColored.TabStop = false;
-            // 
-            // pBox_CSettingGrayscale
-            // 
-            this.pBox_CSettingGrayscale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pBox_CSettingGrayscale.Location = new System.Drawing.Point(22, 117);
-            this.pBox_CSettingGrayscale.Name = "pBox_CSettingGrayscale";
-            this.pBox_CSettingGrayscale.Size = new System.Drawing.Size(50, 50);
-            this.pBox_CSettingGrayscale.TabIndex = 8;
-            this.pBox_CSettingGrayscale.TabStop = false;
             // 
             // txt_Height
             // 
@@ -265,7 +203,7 @@
             // panel_Right
             // 
             this.panel_Right.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(44)))));
-            this.panel_Right.Controls.Add(this.pBox_Enter);
+            this.panel_Right.Controls.Add(this.btn_Enter);
             this.panel_Right.Controls.Add(this.pBox_Output);
             this.panel_Right.Controls.Add(this.text_SaveDestination);
             this.panel_Right.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -273,15 +211,6 @@
             this.panel_Right.Name = "panel_Right";
             this.panel_Right.Size = new System.Drawing.Size(691, 681);
             this.panel_Right.TabIndex = 1;
-            // 
-            // pBox_Enter
-            // 
-            this.pBox_Enter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pBox_Enter.Location = new System.Drawing.Point(554, 592);
-            this.pBox_Enter.Name = "pBox_Enter";
-            this.pBox_Enter.Size = new System.Drawing.Size(100, 50);
-            this.pBox_Enter.TabIndex = 9;
-            this.pBox_Enter.TabStop = false;
             // 
             // pBox_Output
             // 
@@ -302,6 +231,83 @@
             this.text_SaveDestination.TabIndex = 8;
             this.text_SaveDestination.TabStop = false;
             // 
+            // btn_OutputText
+            // 
+            this.btn_OutputText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
+            this.btn_OutputText.FlatAppearance.BorderSize = 0;
+            this.btn_OutputText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_OutputText.Location = new System.Drawing.Point(22, 19);
+            this.btn_OutputText.Name = "btn_OutputText";
+            this.btn_OutputText.Size = new System.Drawing.Size(50, 50);
+            this.btn_OutputText.TabIndex = 10;
+            this.btn_OutputText.UseVisualStyleBackColor = false;
+            // 
+            // btn_OutputImage
+            // 
+            this.btn_OutputImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
+            this.btn_OutputImage.FlatAppearance.BorderSize = 0;
+            this.btn_OutputImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_OutputImage.Location = new System.Drawing.Point(99, 19);
+            this.btn_OutputImage.Name = "btn_OutputImage";
+            this.btn_OutputImage.Size = new System.Drawing.Size(50, 50);
+            this.btn_OutputImage.TabIndex = 11;
+            this.btn_OutputImage.UseVisualStyleBackColor = false;
+            // 
+            // btn_OutputHTML
+            // 
+            this.btn_OutputHTML.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
+            this.btn_OutputHTML.FlatAppearance.BorderSize = 0;
+            this.btn_OutputHTML.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_OutputHTML.Location = new System.Drawing.Point(178, 19);
+            this.btn_OutputHTML.Name = "btn_OutputHTML";
+            this.btn_OutputHTML.Size = new System.Drawing.Size(50, 50);
+            this.btn_OutputHTML.TabIndex = 12;
+            this.btn_OutputHTML.UseVisualStyleBackColor = false;
+            // 
+            // btn_SettingsCustom
+            // 
+            this.btn_SettingsCustom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
+            this.btn_SettingsCustom.FlatAppearance.BorderSize = 0;
+            this.btn_SettingsCustom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_SettingsCustom.Location = new System.Drawing.Point(178, 111);
+            this.btn_SettingsCustom.Name = "btn_SettingsCustom";
+            this.btn_SettingsCustom.Size = new System.Drawing.Size(50, 50);
+            this.btn_SettingsCustom.TabIndex = 15;
+            this.btn_SettingsCustom.UseVisualStyleBackColor = false;
+            // 
+            // btn_SettingsColored
+            // 
+            this.btn_SettingsColored.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
+            this.btn_SettingsColored.FlatAppearance.BorderSize = 0;
+            this.btn_SettingsColored.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_SettingsColored.Location = new System.Drawing.Point(99, 111);
+            this.btn_SettingsColored.Name = "btn_SettingsColored";
+            this.btn_SettingsColored.Size = new System.Drawing.Size(50, 50);
+            this.btn_SettingsColored.TabIndex = 14;
+            this.btn_SettingsColored.UseVisualStyleBackColor = false;
+            // 
+            // btn_SettingsGreyscaled
+            // 
+            this.btn_SettingsGreyscaled.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
+            this.btn_SettingsGreyscaled.FlatAppearance.BorderSize = 0;
+            this.btn_SettingsGreyscaled.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_SettingsGreyscaled.Location = new System.Drawing.Point(22, 111);
+            this.btn_SettingsGreyscaled.Name = "btn_SettingsGreyscaled";
+            this.btn_SettingsGreyscaled.Size = new System.Drawing.Size(50, 50);
+            this.btn_SettingsGreyscaled.TabIndex = 13;
+            this.btn_SettingsGreyscaled.UseVisualStyleBackColor = false;
+            // 
+            // btn_Enter
+            // 
+            this.btn_Enter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
+            this.btn_Enter.FlatAppearance.BorderSize = 0;
+            this.btn_Enter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Enter.Location = new System.Drawing.Point(545, 591);
+            this.btn_Enter.Name = "btn_Enter";
+            this.btn_Enter.Size = new System.Drawing.Size(109, 56);
+            this.btn_Enter.TabIndex = 16;
+            this.btn_Enter.UseVisualStyleBackColor = false;
+            // 
             // MainForm
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.Column;
@@ -318,19 +324,12 @@
             this.panel_Left.ResumeLayout(false);
             this.panel_Left.PerformLayout();
             this.grp_Output.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pBox_HMTL)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pBox_Image)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pBox_Text)).EndInit();
             this.grp_Settings.ResumeLayout(false);
             this.grp_Settings.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pBox_CSettingCustom)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pBox_CSettingColored)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pBox_CSettingGrayscale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.slider_Contrast)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBox_Input)).EndInit();
             this.panel_Right.ResumeLayout(false);
             this.panel_Right.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pBox_Enter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBox_Output)).EndInit();
             this.ResumeLayout(false);
 
@@ -352,16 +351,16 @@
         private System.Windows.Forms.Label lbl_SizeSettings;
         private System.Windows.Forms.Label lbl_FontSettings;
         private System.Windows.Forms.GroupBox grp_Output;
-        private System.Windows.Forms.PictureBox pBox_HMTL;
-        private System.Windows.Forms.PictureBox pBox_Image;
-        private System.Windows.Forms.PictureBox pBox_Text;
         private System.Windows.Forms.Panel panel_Right;
-        private System.Windows.Forms.PictureBox pBox_Enter;
         private System.Windows.Forms.PictureBox pBox_Output;
         private System.Windows.Forms.TextBox text_SaveDestination;
-        private System.Windows.Forms.PictureBox pBox_CSettingCustom;
-        private System.Windows.Forms.PictureBox pBox_CSettingColored;
-        private System.Windows.Forms.PictureBox pBox_CSettingGrayscale;
+        private System.Windows.Forms.Button btn_OutputHTML;
+        private System.Windows.Forms.Button btn_OutputImage;
+        private System.Windows.Forms.Button btn_OutputText;
+        private System.Windows.Forms.Button btn_SettingsCustom;
+        private System.Windows.Forms.Button btn_SettingsColored;
+        private System.Windows.Forms.Button btn_SettingsGreyscaled;
+        private System.Windows.Forms.Button btn_Enter;
     }
 }
 
