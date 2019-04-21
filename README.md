@@ -5,17 +5,19 @@ Included are some image manipulation utility methods like grayscaling, contrast 
 
 Grayscaling and constrast adjustment methods use Lockbits instead of getPixels for a faster performance.
 
+Windows GUI is made with Winforms.
+
 ## Demo
 
 *Generates ascii string from image file.*
-<img src="ASCII-art/Demo/README/ImgToASCII.PNG" alt="ImgToASCII">
+<img src="Core/Demo/README/ImgToASCII.PNG" alt="ImgToASCII">
 
 *Generates image from ascii string.*
-<img src="ASCII-art/Demo/README/ASCIIToImg.PNG" alt="ASCIIToImg">
+<img src="Core/Demo/README/ASCIIToImg.PNG" alt="ASCIIToImg">
 
 ## Screenshots
 
-<img src="ASCII-art/Demo/README/Original.png" height="300" alt="Original"> <img src="ASCII-art/Demo/README/Text.PNG" height="300" alt="asciiTextFile"> <img src="ASCII-art/Demo/README/img.PNG" height="300" alt="asciiStringToImg">
+<img src="Core/Demo/README/Original.png" height="300" alt="Original"> <img src="Core/Demo/README/Text.PNG" height="300" alt="asciiTextFile"> <img src="Core/Demo/README/img.PNG" height="300" alt="asciiStringToImg">
 
 ## Samples
 
@@ -25,4 +27,4 @@ Grayscaling and constrast adjustment methods use Lockbits instead of getPixels f
 - [ ] Add limits to img sizes.
 - [ ] Add color options for html.
 - [ ] Fix aspect ratio.
-- [ ] Convert app to cpp to increase execution speed.
+- [ ] Rewrite core to c++ and GUI to Electron
