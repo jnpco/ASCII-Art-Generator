@@ -1,17 +1,38 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 using Core;
 
 namespace Winforms
 {
     public partial class MainForm : Form
     {
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [DllImportAttribute("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [DllImportAttribute("user32.dll")]
+        public static extern bool ReleaseCapture();
+
         public MainForm()
         {
             InitializeComponent();
+            InitDragFn();
             InitButtons();
             InitIO();
+        }
+
+        private void InitDragFn()
+        {
+            panel_Top.MouseMove += (s, e) => {
+                if (e.Button == MouseButtons.Left)
+                {
+                    ReleaseCapture();
+                    SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+                }
+            };
         }
 
         private void InitButtons()
