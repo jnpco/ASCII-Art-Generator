@@ -12,6 +12,7 @@ namespace Winforms
         // TODO Font Combobox
         // TODO Add switch for colored, greyscale, or custom color.
 
+        #region Handle Panel Drag
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
 
@@ -19,6 +20,10 @@ namespace Winforms
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
         [DllImportAttribute("user32.dll")]
         public static extern bool ReleaseCapture();
+        #endregion
+
+        private Button colorModeSelected;
+        private Button[] colorModes;
 
         public MainForm()
         {
@@ -41,6 +46,26 @@ namespace Winforms
             pBox_Input.AllowDrop = true;
             pBox_Input.DragEnter += (s, e) => { e.Effect = DragDropEffects.Copy; };
             pBox_Input.DragDrop += (s, e) => { pBox_Input.Image = Image.FromFile( ((string[])e.Data.GetData(DataFormats.FileDrop))[0] ); };
+
+            // Color Mode
+            colorModes = new Button[] { btn_SettingsGreyscaled, btn_SettingsColored, btn_SettingsCustom};
+            setColorModeSelected(colorModes[0]);
+            foreach(Button colorMode in colorModes) { colorMode.Click += (s, e) => { switchColorMode(colorMode); }; }
+        }
+
+        void setColorModeSelected(Button colorMode)
+        {
+            colorModeSelected = colorMode;
+            colorModeSelected.BackColor = Color.DarkSlateBlue;
+        }
+
+        void switchColorMode(Button colorMode)
+        {
+            if (colorModeSelected != colorMode)
+            {
+                colorModeSelected.BackColor = Color.FromArgb(61, 61, 61);
+                setColorModeSelected(colorMode);
+            }
         }
 
         string GenerateASCIIString(Bitmap image)
