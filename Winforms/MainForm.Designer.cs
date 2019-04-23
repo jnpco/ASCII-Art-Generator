@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panel_Right = new System.Windows.Forms.Panel();
             this.btn_Generate = new System.Windows.Forms.Button();
+            this.pBox_Output = new System.Windows.Forms.PictureBox();
             this.lbl_Log = new System.Windows.Forms.Label();
             this.panel_Top = new System.Windows.Forms.Panel();
             this.btn_Close = new System.Windows.Forms.Button();
@@ -41,6 +42,7 @@
             this.btn_OutputImage = new System.Windows.Forms.Button();
             this.btn_OutputText = new System.Windows.Forms.Button();
             this.grp_Settings = new System.Windows.Forms.GroupBox();
+            this.cBox_AspectRatio = new System.Windows.Forms.CheckBox();
             this.lbl_Height = new System.Windows.Forms.Label();
             this.lbl_Width = new System.Windows.Forms.Label();
             this.txt_Height = new System.Windows.Forms.TextBox();
@@ -53,19 +55,18 @@
             this.lbl_ContrastMaximum = new System.Windows.Forms.Label();
             this.lbl_ContrastMinimum = new System.Windows.Forms.Label();
             this.slider_Contrast = new System.Windows.Forms.TrackBar();
-            this.pBox_Output = new System.Windows.Forms.PictureBox();
             this.pBox_Input = new System.Windows.Forms.PictureBox();
             this.btn_SettingsCustom = new System.Windows.Forms.Button();
             this.btn_SettingsColored = new System.Windows.Forms.Button();
             this.btn_SettingsGreyscaled = new System.Windows.Forms.Button();
             this.pBox_Logo = new System.Windows.Forms.PictureBox();
-            this.cBox_AspectRatio = new System.Windows.Forms.CheckBox();
+            this.lbl_Contrast = new System.Windows.Forms.Label();
             this.panel_Right.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pBox_Output)).BeginInit();
             this.panel_Top.SuspendLayout();
             this.grp_Output.SuspendLayout();
             this.grp_Settings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.slider_Contrast)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pBox_Output)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBox_Input)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBox_Logo)).BeginInit();
             this.SuspendLayout();
@@ -98,6 +99,16 @@
             this.btn_Generate.TabIndex = 13;
             this.btn_Generate.Text = "Generate";
             this.btn_Generate.UseVisualStyleBackColor = false;
+            // 
+            // pBox_Output
+            // 
+            this.pBox_Output.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pBox_Output.Location = new System.Drawing.Point(48, 56);
+            this.pBox_Output.Name = "pBox_Output";
+            this.pBox_Output.Size = new System.Drawing.Size(565, 531);
+            this.pBox_Output.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pBox_Output.TabIndex = 27;
+            this.pBox_Output.TabStop = false;
             // 
             // lbl_Log
             // 
@@ -242,12 +253,22 @@
             this.grp_Settings.TabStop = false;
             this.grp_Settings.Text = "SETTINGS";
             // 
+            // cBox_AspectRatio
+            // 
+            this.cBox_AspectRatio.AutoSize = true;
+            this.cBox_AspectRatio.Location = new System.Drawing.Point(9, 86);
+            this.cBox_AspectRatio.Name = "cBox_AspectRatio";
+            this.cBox_AspectRatio.Size = new System.Drawing.Size(138, 21);
+            this.cBox_AspectRatio.TabIndex = 28;
+            this.cBox_AspectRatio.Text = "Keep Aspect Ratio";
+            this.cBox_AspectRatio.UseVisualStyleBackColor = true;
+            // 
             // lbl_Height
             // 
             this.lbl_Height.AutoSize = true;
             this.lbl_Height.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Height.ForeColor = System.Drawing.Color.DarkGray;
-            this.lbl_Height.Location = new System.Drawing.Point(109, 60);
+            this.lbl_Height.Location = new System.Drawing.Point(110, 60);
             this.lbl_Height.Name = "lbl_Height";
             this.lbl_Height.Size = new System.Drawing.Size(16, 16);
             this.lbl_Height.TabIndex = 27;
@@ -258,7 +279,7 @@
             this.lbl_Width.AutoSize = true;
             this.lbl_Width.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Width.ForeColor = System.Drawing.Color.DarkGray;
-            this.lbl_Width.Location = new System.Drawing.Point(46, 61);
+            this.lbl_Width.Location = new System.Drawing.Point(46, 60);
             this.lbl_Width.Name = "lbl_Width";
             this.lbl_Width.Size = new System.Drawing.Size(19, 16);
             this.lbl_Width.TabIndex = 26;
@@ -334,7 +355,7 @@
             this.lbl_ContrastDefault.AutoSize = true;
             this.lbl_ContrastDefault.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_ContrastDefault.ForeColor = System.Drawing.Color.DarkGray;
-            this.lbl_ContrastDefault.Location = new System.Drawing.Point(152, 334);
+            this.lbl_ContrastDefault.Location = new System.Drawing.Point(152, 342);
             this.lbl_ContrastDefault.Name = "lbl_ContrastDefault";
             this.lbl_ContrastDefault.Size = new System.Drawing.Size(14, 16);
             this.lbl_ContrastDefault.TabIndex = 25;
@@ -345,7 +366,7 @@
             this.lbl_ContrastMaximum.AutoSize = true;
             this.lbl_ContrastMaximum.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_ContrastMaximum.ForeColor = System.Drawing.Color.DarkGray;
-            this.lbl_ContrastMaximum.Location = new System.Drawing.Point(256, 334);
+            this.lbl_ContrastMaximum.Location = new System.Drawing.Point(256, 342);
             this.lbl_ContrastMaximum.Name = "lbl_ContrastMaximum";
             this.lbl_ContrastMaximum.Size = new System.Drawing.Size(26, 16);
             this.lbl_ContrastMaximum.TabIndex = 23;
@@ -356,7 +377,7 @@
             this.lbl_ContrastMinimum.AutoSize = true;
             this.lbl_ContrastMinimum.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_ContrastMinimum.ForeColor = System.Drawing.Color.DarkGray;
-            this.lbl_ContrastMinimum.Location = new System.Drawing.Point(31, 334);
+            this.lbl_ContrastMinimum.Location = new System.Drawing.Point(31, 342);
             this.lbl_ContrastMinimum.Name = "lbl_ContrastMinimum";
             this.lbl_ContrastMinimum.Size = new System.Drawing.Size(30, 16);
             this.lbl_ContrastMinimum.TabIndex = 22;
@@ -364,21 +385,11 @@
             // 
             // slider_Contrast
             // 
-            this.slider_Contrast.Location = new System.Drawing.Point(31, 302);
+            this.slider_Contrast.Location = new System.Drawing.Point(31, 310);
             this.slider_Contrast.Minimum = -10;
             this.slider_Contrast.Name = "slider_Contrast";
             this.slider_Contrast.Size = new System.Drawing.Size(250, 45);
             this.slider_Contrast.TabIndex = 21;
-            // 
-            // pBox_Output
-            // 
-            this.pBox_Output.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pBox_Output.Location = new System.Drawing.Point(48, 56);
-            this.pBox_Output.Name = "pBox_Output";
-            this.pBox_Output.Size = new System.Drawing.Size(565, 531);
-            this.pBox_Output.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pBox_Output.TabIndex = 27;
-            this.pBox_Output.TabStop = false;
             // 
             // pBox_Input
             // 
@@ -456,15 +467,16 @@
             this.pBox_Logo.TabIndex = 28;
             this.pBox_Logo.TabStop = false;
             // 
-            // cBox_AspectRatio
+            // lbl_Contrast
             // 
-            this.cBox_AspectRatio.AutoSize = true;
-            this.cBox_AspectRatio.Location = new System.Drawing.Point(9, 86);
-            this.cBox_AspectRatio.Name = "cBox_AspectRatio";
-            this.cBox_AspectRatio.Size = new System.Drawing.Size(138, 21);
-            this.cBox_AspectRatio.TabIndex = 28;
-            this.cBox_AspectRatio.Text = "Keep Aspect Ratio";
-            this.cBox_AspectRatio.UseVisualStyleBackColor = true;
+            this.lbl_Contrast.AutoSize = true;
+            this.lbl_Contrast.Font = new System.Drawing.Font("Century Gothic", 9F);
+            this.lbl_Contrast.ForeColor = System.Drawing.Color.DarkGray;
+            this.lbl_Contrast.Location = new System.Drawing.Point(33, 299);
+            this.lbl_Contrast.Name = "lbl_Contrast";
+            this.lbl_Contrast.Size = new System.Drawing.Size(69, 17);
+            this.lbl_Contrast.TabIndex = 29;
+            this.lbl_Contrast.Text = "CONTRAST";
             // 
             // MainForm
             // 
@@ -473,6 +485,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(36)))));
             this.ClientSize = new System.Drawing.Size(969, 681);
+            this.Controls.Add(this.lbl_Contrast);
             this.Controls.Add(this.pBox_Logo);
             this.Controls.Add(this.btn_SettingsCustom);
             this.Controls.Add(this.btn_SettingsColored);
@@ -488,14 +501,15 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.panel_Right.ResumeLayout(false);
             this.panel_Right.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pBox_Output)).EndInit();
             this.panel_Top.ResumeLayout(false);
             this.grp_Output.ResumeLayout(false);
             this.grp_Settings.ResumeLayout(false);
             this.grp_Settings.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.slider_Contrast)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pBox_Output)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBox_Input)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBox_Logo)).EndInit();
             this.ResumeLayout(false);
@@ -535,6 +549,7 @@
         private System.Windows.Forms.Button btn_SettingsGreyscaled;
         private System.Windows.Forms.PictureBox pBox_Logo;
         private System.Windows.Forms.CheckBox cBox_AspectRatio;
+        private System.Windows.Forms.Label lbl_Contrast;
     }
 }
 

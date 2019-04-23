@@ -3,15 +3,26 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using Core;
+using System.Drawing.Text;
 
 namespace Winforms
 {
+    struct ColorModeSwitch
+    {
+        public enum ColorMode { GREYSCALED, COLORED, CUSTOM }
+
+        public Button component;
+        public ColorMode colorMode;
+
+        public ColorModeSwitch(Button component, ColorMode colorMode)
+        {
+            this.component = component;
+            this.colorMode = colorMode;
+        }
+    }
+
     public partial class MainForm : Form
     {
-        // TODO Validations, Size validations (Min, Max) Generate Size.
-        // TODO Font Combobox
-        // TODO Add switch for colored, greyscale, or custom color.
-
         #region Handle Panel Drag
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
@@ -22,22 +33,35 @@ namespace Winforms
         public static extern bool ReleaseCapture();
         #endregion
 
+        #region Initializing MonospacedFonts
+        #endregion
+
+        private enum SaveMode { TEXT, IMAGE, HTML }
+        
         private Button colorModeSelected;
         private Button[] colorModes;
+
+        private Color colorModeActive;
+        private Color colorModeInactive;
 
         public MainForm()
         {
             InitializeComponent();
+        }
+        
+        private void MainForm_Load(object sender, EventArgs e)
+        {
             InitComponents();
+            colorModeActive = Color.DarkSlateBlue;
+            colorModeInactive = Color.FromArgb(61, 61, 61);
         }
 
         private void InitComponents()
         {
-            // Handle Dragging of panel
+            // Handle Titlebar drag
             panel_Top.MouseMove += (s, e) => { if (e.Button == MouseButtons.Left) { ReleaseCapture(); SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0); } };
 
-            // Handle Button clicks
-            btn_Generate.Click += (s, e) => { pBox_Output.Image = GenerateASCIIImage(GenerateASCIIString((Bitmap)pBox_Input.Image)); };
+            // Handle Titlebar clicks
             btn_Minimize.Click += (s, e) => { this.WindowState = FormWindowState.Minimized; };
             btn_Info.Click += (s, e) => { };
             btn_Close.Click += (s, e) => { Application.Exit(); };
@@ -47,32 +71,53 @@ namespace Winforms
             pBox_Input.DragEnter += (s, e) => { e.Effect = DragDropEffects.Copy; };
             pBox_Input.DragDrop += (s, e) => { pBox_Input.Image = Image.FromFile( ((string[])e.Data.GetData(DataFormats.FileDrop))[0] ); };
 
-            // Color Mode
+            // Handle Color Modes
             colorModes = new Button[] { btn_SettingsGreyscaled, btn_SettingsColored, btn_SettingsCustom};
-            setColorModeSelected(colorModes[0]);
-            foreach(Button colorMode in colorModes) { colorMode.Click += (s, e) => { switchColorMode(colorMode); }; }
+            SetColorModeSelected(colorModes[0]);
+            foreach(Button colorMode in colorModes) { colorMode.Click += (s, e) => { SwitchColorMode(colorMode); }; }
+
+            // Handle Save and Generate clicks
+            btn_OutputText.Click += (s, e) => { SaveOutput(SaveMode.TEXT); };
+            btn_OutputImage.Click += (s, e) => { SaveOutput(SaveMode.IMAGE); };
+            btn_OutputHTML.Click += (s, e) => { SaveOutput(SaveMode.HTML); };
+            btn_Generate.Click += (s, e) => { pBox_Output.Image = GenerateASCIIImage(GenerateASCIIString()); };
         }
 
-        void setColorModeSelected(Button colorMode)
+        private void SetColorModeSelected(Button colorMode)
         {
             colorModeSelected = colorMode;
-            colorModeSelected.BackColor = Color.DarkSlateBlue;
+            colorModeSelected.BackColor = colorModeInactive;
         }
 
-        void switchColorMode(Button colorMode)
+        private void SwitchColorMode(Button colorMode)
         {
             if (colorModeSelected != colorMode)
             {
-                colorModeSelected.BackColor = Color.FromArgb(61, 61, 61);
-                setColorModeSelected(colorMode);
+                colorModeSelected.BackColor = colorModeActive;
+                SetColorModeSelected(colorMode);
             }
         }
 
-        string GenerateASCIIString(Bitmap image)
+        private void SaveOutput(SaveMode saveMode)
+        {
+            switch (saveMode)
+            {
+                case SaveMode.TEXT:
+                    break;
+                case SaveMode.IMAGE:
+                    break;
+                case SaveMode.HTML:
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private string GenerateASCIIString()
         {
             int width;
             int contrast = slider_Contrast.Value * 10;
-            Font font = new Font(txt_FontFamily.Text, Int32.Parse(txt_FontSize.Text)); // No need for checks because this will be a combobox.
+            Font font = new Font(txt_FontFamily.Text, Int32.Parse(txt_FontSize.Text));
 
             if (!Int32.TryParse(txt_Width.Text, out width))
             {
@@ -80,13 +125,14 @@ namespace Winforms
                 txt_Width.Text = width.ToString();
             }
 
-            return new ASCIIGenerator() { BlackBG = false } .GenerateASCII(image, width, contrast);
+            return new ASCIIGenerator() { BlackBG = false } .GenerateASCII((Bitmap)pBox_Input.Image, width, contrast);
         }
 
-        Bitmap GenerateASCIIImage(string ascii)
+        private Bitmap GenerateASCIIImage(string ascii)
         {
             Font font = new Font(txt_FontFamily.Text, Int32.Parse(txt_FontSize.Text));
             return new ASCIIGenerator().ASCIIToImage(ascii, pBox_Input.Width, font, Color.Black);
         }
+
     }
 }
