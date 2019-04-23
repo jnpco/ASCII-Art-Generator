@@ -19,52 +19,34 @@ namespace Winforms
         public MainForm()
         {
             InitializeComponent();
-            InitDragFn();
-            InitButtons();
-            InitIO();
+            InitComponents();
         }
 
-        private void InitDragFn()
+        private void InitComponents()
         {
-            panel_Top.MouseMove += (s, e) => {
-                if (e.Button == MouseButtons.Left)
-                {
-                    ReleaseCapture();
-                    SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-                }
-            };
-        }
+            // Handle Dragging of panel
+            panel_Top.MouseMove += (s, e) => { if (e.Button == MouseButtons.Left) { ReleaseCapture(); SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0); } };
 
-        private void InitButtons()
-        {
+            // Handle Button clicks
+            btn_Generate.Click += (s, e) => { pBox_Output.Image = GenerateASCIIImage(GenerateASCIIString((Bitmap)pBox_Input.Image)); };
             btn_Minimize.Click += (s, e) => { this.WindowState = FormWindowState.Minimized; };
             btn_Info.Click += (s, e) => { };
             btn_Close.Click += (s, e) => { Application.Exit(); };
-        }
 
-        private void InitIO()
-        {
+            // Handle P_Box events
             pBox_Input.AllowDrop = true;
             pBox_Input.DragEnter += (s, e) => { e.Effect = DragDropEffects.Copy; };
-
-            pBox_Input.DragDrop += (s, e) => {
-                foreach(string file in ((string[])e.Data.GetData(DataFormats.FileDrop)))
-                {
-                    Image image = Image.FromFile(file);
-                    pBox_Input.Image = image;
-                    pBox_Output.Image = GenerateASCIIImage(GenerateASCIIString((Bitmap)image));
-                }
-            };
+            pBox_Input.DragDrop += (s, e) => { pBox_Input.Image = Image.FromFile( ((string[])e.Data.GetData(DataFormats.FileDrop))[0] ); };
         }
 
         string GenerateASCIIString(Bitmap image)
         {
-            return new ASCIIGenerator() { BlackBG = false } .GenerateASCII(image);
+            return new ASCIIGenerator() { BlackBG = false } .GenerateASCII(image, pBox_Input.Width, slider_Contrast.Value * 10);
         }
 
         Bitmap GenerateASCIIImage(string ascii)
         {
-            return new ASCIIGenerator().ASCIIToImage(ascii);
+            return new ASCIIGenerator().ASCIIToImage(ascii, Int32.Parse(txt_Width.Text), new Font(txt_FontFamily.Text, Int32.Parse(txt_FontSize.Text)), Color.Black);
         }
 
         void SaveImageToFile(Bitmap image, string destination)
