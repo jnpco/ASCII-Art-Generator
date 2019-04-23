@@ -8,6 +8,10 @@ namespace Winforms
 {
     public partial class MainForm : Form
     {
+        // TODO Validations, Size validations (Min, Max) Generate Size.
+        // TODO Font Combobox
+        // TODO Add switch for colored, greyscale, or custom color.
+
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
 
@@ -41,17 +45,23 @@ namespace Winforms
 
         string GenerateASCIIString(Bitmap image)
         {
-            return new ASCIIGenerator() { BlackBG = false } .GenerateASCII(image, pBox_Input.Width, slider_Contrast.Value * 10);
+            int width;
+            int contrast = slider_Contrast.Value * 10;
+            Font font = new Font(txt_FontFamily.Text, Int32.Parse(txt_FontSize.Text)); // No need for checks because this will be a combobox.
+
+            if (!Int32.TryParse(txt_Width.Text, out width))
+            {
+                width = pBox_Input.Width;
+                txt_Width.Text = width.ToString();
+            }
+
+            return new ASCIIGenerator() { BlackBG = false } .GenerateASCII(image, width, contrast);
         }
 
         Bitmap GenerateASCIIImage(string ascii)
         {
-            return new ASCIIGenerator().ASCIIToImage(ascii, Int32.Parse(txt_Width.Text), new Font(txt_FontFamily.Text, Int32.Parse(txt_FontSize.Text)), Color.Black);
-        }
-
-        void SaveImageToFile(Bitmap image, string destination)
-        {
-            image.Save(destination);
+            Font font = new Font(txt_FontFamily.Text, Int32.Parse(txt_FontSize.Text));
+            return new ASCIIGenerator().ASCIIToImage(ascii, pBox_Input.Width, font, Color.Black);
         }
     }
 }
