@@ -46,9 +46,7 @@
             this.lbl_Height = new System.Windows.Forms.Label();
             this.lbl_Width = new System.Windows.Forms.Label();
             this.txt_Height = new System.Windows.Forms.TextBox();
-            this.txt_FontFamily = new System.Windows.Forms.TextBox();
             this.txt_Width = new System.Windows.Forms.TextBox();
-            this.txt_FontSize = new System.Windows.Forms.TextBox();
             this.lbl_SizeSettings = new System.Windows.Forms.Label();
             this.lbl_FontSettings = new System.Windows.Forms.Label();
             this.lbl_ContrastDefault = new System.Windows.Forms.Label();
@@ -61,6 +59,8 @@
             this.btn_SettingsGreyscaled = new System.Windows.Forms.Button();
             this.pBox_Logo = new System.Windows.Forms.PictureBox();
             this.lbl_Contrast = new System.Windows.Forms.Label();
+            this.cBox_FontName = new System.Windows.Forms.ComboBox();
+            this.cBox_FontSize = new System.Windows.Forms.ComboBox();
             this.panel_Right.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pBox_Output)).BeginInit();
             this.panel_Top.SuspendLayout();
@@ -235,13 +235,13 @@
             // 
             // grp_Settings
             // 
+            this.grp_Settings.Controls.Add(this.cBox_FontSize);
+            this.grp_Settings.Controls.Add(this.cBox_FontName);
             this.grp_Settings.Controls.Add(this.cBox_AspectRatio);
             this.grp_Settings.Controls.Add(this.lbl_Height);
             this.grp_Settings.Controls.Add(this.lbl_Width);
             this.grp_Settings.Controls.Add(this.txt_Height);
-            this.grp_Settings.Controls.Add(this.txt_FontFamily);
             this.grp_Settings.Controls.Add(this.txt_Width);
-            this.grp_Settings.Controls.Add(this.txt_FontSize);
             this.grp_Settings.Controls.Add(this.lbl_SizeSettings);
             this.grp_Settings.Controls.Add(this.lbl_FontSettings);
             this.grp_Settings.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -290,21 +290,11 @@
             this.txt_Height.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(99)))));
             this.txt_Height.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_Height.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txt_Height.Location = new System.Drawing.Point(128, 55);
+            this.txt_Height.Location = new System.Drawing.Point(128, 56);
             this.txt_Height.MaxLength = 6;
             this.txt_Height.Name = "txt_Height";
             this.txt_Height.Size = new System.Drawing.Size(38, 21);
             this.txt_Height.TabIndex = 7;
-            // 
-            // txt_FontFamily
-            // 
-            this.txt_FontFamily.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(99)))));
-            this.txt_FontFamily.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_FontFamily.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txt_FontFamily.Location = new System.Drawing.Point(97, 24);
-            this.txt_FontFamily.Name = "txt_FontFamily";
-            this.txt_FontFamily.Size = new System.Drawing.Size(69, 21);
-            this.txt_FontFamily.TabIndex = 6;
             // 
             // txt_Width
             // 
@@ -316,17 +306,6 @@
             this.txt_Width.Name = "txt_Width";
             this.txt_Width.Size = new System.Drawing.Size(40, 21);
             this.txt_Width.TabIndex = 4;
-            // 
-            // txt_FontSize
-            // 
-            this.txt_FontSize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(99)))));
-            this.txt_FontSize.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_FontSize.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txt_FontSize.Location = new System.Drawing.Point(51, 24);
-            this.txt_FontSize.MaxLength = 6;
-            this.txt_FontSize.Name = "txt_FontSize";
-            this.txt_FontSize.Size = new System.Drawing.Size(34, 21);
-            this.txt_FontSize.TabIndex = 3;
             // 
             // lbl_SizeSettings
             // 
@@ -478,6 +457,34 @@
             this.lbl_Contrast.TabIndex = 29;
             this.lbl_Contrast.Text = "CONTRAST";
             // 
+            // cBox_FontName
+            // 
+            this.cBox_FontName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(99)))));
+            this.cBox_FontName.DropDownHeight = 100;
+            this.cBox_FontName.DropDownWidth = 200;
+            this.cBox_FontName.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cBox_FontName.FormattingEnabled = true;
+            this.cBox_FontName.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.cBox_FontName.IntegralHeight = false;
+            this.cBox_FontName.ItemHeight = 16;
+            this.cBox_FontName.Location = new System.Drawing.Point(106, 24);
+            this.cBox_FontName.Name = "cBox_FontName";
+            this.cBox_FontName.Size = new System.Drawing.Size(60, 24);
+            this.cBox_FontName.TabIndex = 28;
+            // 
+            // cBox_FontSize
+            // 
+            this.cBox_FontSize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(99)))));
+            this.cBox_FontSize.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cBox_FontSize.FormattingEnabled = true;
+            this.cBox_FontSize.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.cBox_FontSize.ItemHeight = 16;
+            this.cBox_FontSize.Location = new System.Drawing.Point(55, 24);
+            this.cBox_FontSize.Name = "cBox_FontSize";
+            this.cBox_FontSize.Size = new System.Drawing.Size(45, 24);
+            this.cBox_FontSize.TabIndex = 29;
+            this.cBox_FontSize.Text = "14";
+            // 
             // MainForm
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.Column;
@@ -529,9 +536,7 @@
         private System.Windows.Forms.Button btn_OutputText;
         private System.Windows.Forms.GroupBox grp_Settings;
         private System.Windows.Forms.TextBox txt_Height;
-        private System.Windows.Forms.TextBox txt_FontFamily;
         private System.Windows.Forms.TextBox txt_Width;
-        private System.Windows.Forms.TextBox txt_FontSize;
         private System.Windows.Forms.Label lbl_SizeSettings;
         private System.Windows.Forms.Label lbl_FontSettings;
         private System.Windows.Forms.Label lbl_ContrastDefault;
@@ -550,6 +555,8 @@
         private System.Windows.Forms.PictureBox pBox_Logo;
         private System.Windows.Forms.CheckBox cBox_AspectRatio;
         private System.Windows.Forms.Label lbl_Contrast;
+        private System.Windows.Forms.ComboBox cBox_FontName;
+        private System.Windows.Forms.ComboBox cBox_FontSize;
     }
 }
 

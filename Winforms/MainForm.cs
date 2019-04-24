@@ -3,21 +3,20 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using Core;
-using System.Drawing.Text;
 
 namespace Winforms
 {
     struct ColorModeSwitch
     {
-        public enum ColorMode { GREYSCALED, COLORED, CUSTOM }
+        public enum Mode { GREYSCALED, COLORED, CUSTOM }
 
         public Button component;
-        public ColorMode colorMode;
+        public Mode mode;
 
-        public ColorModeSwitch(Button component, ColorMode colorMode)
+        public ColorModeSwitch(Button component, Mode mode)
         {
             this.component = component;
-            this.colorMode = colorMode;
+            this.mode = mode;
         }
     }
 
@@ -33,13 +32,10 @@ namespace Winforms
         public static extern bool ReleaseCapture();
         #endregion
 
-        #region Initializing MonospacedFonts
-        #endregion
-
         private enum SaveMode { TEXT, IMAGE, HTML }
         
-        private Button colorModeSelected;
-        private Button[] colorModes;
+        private ColorModeSwitch colorModeSelected;
+        private ColorModeSwitch[] colorModes;
 
         private Color colorModeActive;
         private Color colorModeInactive;
@@ -52,11 +48,25 @@ namespace Winforms
         private void MainForm_Load(object sender, EventArgs e)
         {
             InitComponents();
-            colorModeActive = Color.DarkSlateBlue;
-            colorModeInactive = Color.FromArgb(61, 61, 61);
+            
+            this.Paint += (s, pe) =>
+            {
+                foreach (FontFamily fontFamily in FontFamily.Families)
+                {
+                    cBox_FontName.Items.Add(fontFamily.Name.ToString());
+                }
+            };
         }
 
         private void InitComponents()
+        {
+            InitTitleBar();
+            InitPBox(); 
+            InitColorModes();
+            InitOutputGenerate();
+        }
+
+        private void InitTitleBar()
         {
             // Handle Titlebar drag
             panel_Top.MouseMove += (s, e) => { if (e.Button == MouseButtons.Left) { ReleaseCapture(); SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0); } };
@@ -65,17 +75,36 @@ namespace Winforms
             btn_Minimize.Click += (s, e) => { this.WindowState = FormWindowState.Minimized; };
             btn_Info.Click += (s, e) => { };
             btn_Close.Click += (s, e) => { Application.Exit(); };
+        }
 
+        private void InitPBox()
+        {
             // Handle P_Box events
             pBox_Input.AllowDrop = true;
             pBox_Input.DragEnter += (s, e) => { e.Effect = DragDropEffects.Copy; };
-            pBox_Input.DragDrop += (s, e) => { pBox_Input.Image = Image.FromFile( ((string[])e.Data.GetData(DataFormats.FileDrop))[0] ); };
+            pBox_Input.DragDrop += (s, e) => { pBox_Input.Image = Image.FromFile(((string[])e.Data.GetData(DataFormats.FileDrop))[0]); };
+        }
+
+        private void InitColorModes()
+        {
 
             // Handle Color Modes
-            colorModes = new Button[] { btn_SettingsGreyscaled, btn_SettingsColored, btn_SettingsCustom};
-            SetColorModeSelected(colorModes[0]);
-            foreach(Button colorMode in colorModes) { colorMode.Click += (s, e) => { SwitchColorMode(colorMode); }; }
+            colorModeActive = Color.DarkSlateBlue;
+            colorModeInactive = Color.FromArgb(61, 61, 61);
 
+            colorModes = new ColorModeSwitch[]
+            {
+                new ColorModeSwitch(btn_SettingsGreyscaled, ColorModeSwitch.Mode.GREYSCALED),
+                new ColorModeSwitch(btn_SettingsColored, ColorModeSwitch.Mode.COLORED),
+                new ColorModeSwitch(btn_SettingsCustom, ColorModeSwitch.Mode.CUSTOM)
+            };
+            SetColorModeSelected(colorModes[0]);
+            foreach (ColorModeSwitch colorMode in colorModes) { colorMode.component.Click += (s, e) => { SwitchColorMode(colorMode); }; }
+
+        }
+
+        private void InitOutputGenerate()
+        {
             // Handle Save and Generate clicks
             btn_OutputText.Click += (s, e) => { SaveOutput(SaveMode.TEXT); };
             btn_OutputImage.Click += (s, e) => { SaveOutput(SaveMode.IMAGE); };
@@ -83,17 +112,17 @@ namespace Winforms
             btn_Generate.Click += (s, e) => { pBox_Output.Image = GenerateASCIIImage(GenerateASCIIString()); };
         }
 
-        private void SetColorModeSelected(Button colorMode)
+        private void SetColorModeSelected(ColorModeSwitch colorMode)
         {
             colorModeSelected = colorMode;
-            colorModeSelected.BackColor = colorModeInactive;
+            colorModeSelected.component.BackColor = colorModeActive;
         }
 
-        private void SwitchColorMode(Button colorMode)
+        private void SwitchColorMode(ColorModeSwitch colorMode)
         {
-            if (colorModeSelected != colorMode)
+            if (colorModeSelected.mode != colorMode.mode)
             {
-                colorModeSelected.BackColor = colorModeActive;
+                colorModeSelected.component.BackColor = colorModeInactive;
                 SetColorModeSelected(colorMode);
             }
         }
@@ -117,7 +146,7 @@ namespace Winforms
         {
             int width;
             int contrast = slider_Contrast.Value * 10;
-            Font font = new Font(txt_FontFamily.Text, Int32.Parse(txt_FontSize.Text));
+            Font font = new Font(cBox_FontName.Text, Int32.Parse(cBox_FontSize.Text));
 
             if (!Int32.TryParse(txt_Width.Text, out width))
             {
@@ -130,7 +159,7 @@ namespace Winforms
 
         private Bitmap GenerateASCIIImage(string ascii)
         {
-            Font font = new Font(txt_FontFamily.Text, Int32.Parse(txt_FontSize.Text));
+            Font font = new Font(cBox_FontName.Text, Int32.Parse(cBox_FontSize.Text));
             return new ASCIIGenerator().ASCIIToImage(ascii, pBox_Input.Width, font, Color.Black);
         }
 
