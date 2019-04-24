@@ -137,6 +137,20 @@ namespace Core
         /// Generates an image from ascii string.
         /// </summary>
         /// <param name="ascii"> String to be drawn to the empty bitmap </param>
+        /// <param name="font"> Font to be set when drawing the ascii string. <para> * Use monospaced fonts only. </para></param>
+        /// <param name="color"> Font color. </param>
+        /// <returns> An image that drawn with the ascii string. </returns>
+        public Bitmap ASCIIToImage(string ascii, Font font, Color color)
+        {
+            var dim = Graphics.FromImage(new Bitmap(1, 1)).MeasureString(ascii, font);
+            return ASCIIToImage(ascii, (int)dim.Width, font, color);
+        }
+
+
+        /// <summary>
+        /// Generates an image from ascii string.
+        /// </summary>
+        /// <param name="ascii"> String to be drawn to the empty bitmap </param>
         /// <param name="width"> Width of the newly created bitmap. </param>
         /// <param name="font"> Font to be set when drawing the ascii string. <para> * Use monospaced fonts only. </para></param>
         /// <param name="color"> Font color. </param>

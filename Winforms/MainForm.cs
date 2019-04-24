@@ -168,6 +168,12 @@ namespace Winforms
 
         private void SaveOutput(SaveMode saveMode)
         {
+            if (pBox_Output.Image == null)
+            {
+                Shake();
+                new MessageBox(this, "Generate before saving.").Show();
+                return;
+            }
             switch (saveMode)
             {
                 case SaveMode.TEXT:
@@ -186,12 +192,6 @@ namespace Winforms
 
         private void SaveToText()
         {
-            if (pBox_Output.Image == null)
-            {
-                Shake();
-                new MessageBox(this, "Generate before saving.").Show();
-                return;
-            }
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "Text files (*.txt)|*.txt;";
             if (sfd.ShowDialog() == DialogResult.OK)
@@ -205,14 +205,8 @@ namespace Winforms
 
         private void SaveToImage()
         {
-            if(pBox_Output.Image == null)
-            {
-                Shake();
-                new MessageBox(this, "Generate before saving.").Show();
-                return;
-            }
             SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "Bitmap Image (.bmp)|*.bmp|Gif Image (.gif)|*.gif|JPEG Image (.jpeg)|*.jpeg|Png Image (.png)|*.png|Tiff Image (.tiff)|*.tiff|Wmf Image (.wmf)|*.wmf"; ;
+            sfd.Filter = "Bitmap Image (.bmp)|*.bmp|Gif Image (.gif)|*.gif|JPEG Image (.jpeg)|*.jpeg|Png Image (.png)|*.png|Tiff Image (.tiff)|*.tiff|Wmf Image (.wmf)|*.wmf";
             if (sfd.ShowDialog() == DialogResult.OK)
             {
                 string path = sfd.FileName;
@@ -240,7 +234,7 @@ namespace Winforms
         private Bitmap GenerateASCIIImage(string ascii)
         {
             Font font = new Font(cBox_FontName.Text, Int32.Parse(cBox_FontSize.Text));
-            return new ASCIIGenerator().ASCIIToImage(ascii, pBox_Input.Width, font, Color.Black);
+            return new ASCIIGenerator().ASCIIToImage(ascii, font, Color.Black);
         }
 
         private void Shake()
