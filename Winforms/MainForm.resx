@@ -118,6 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btn_Info.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAACsSURBVFhH7dIxCsJAFEXRtFaCveASrFyPpZ1Zx2xGcGOp
+        rL9vYNLILV71bGbgELh8mJ+Qpar+CmMSxiSMSRiTMCZhTMLoaK2d5C0vOdCMA6NDlz6lhgfNODA6dOlZ
+        PrLJjWYcGB370eXH/qQZB0bH76EZB0aH3nwdn7+704wDo2MssP+EK804MDrmAnOBucBcYC6gSy9jie5K
+        Mw6MSRiTMCZhTMKYhDEJY04tXwDtsJuwGo8MAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="btn_SettingsCustom.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
