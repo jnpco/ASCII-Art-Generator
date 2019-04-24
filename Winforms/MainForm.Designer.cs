@@ -91,18 +91,18 @@
             this.lbl_Log.AutoSize = true;
             this.lbl_Log.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Log.ForeColor = System.Drawing.Color.DarkGray;
-            this.lbl_Log.Location = new System.Drawing.Point(45, 658);
+            this.lbl_Log.Location = new System.Drawing.Point(45, 655);
             this.lbl_Log.Name = "lbl_Log";
-            this.lbl_Log.Size = new System.Drawing.Size(277, 16);
+            this.lbl_Log.Size = new System.Drawing.Size(268, 16);
             this.lbl_Log.TabIndex = 30;
-            this.lbl_Log.Text = "DRAG IMAGE AND CLICK GENERATE TO PREVIEW...";
+            this.lbl_Log.Text = "DRAG IMAGE AND CLICK GENERATE THEN SAVE...";
             // 
             // grp_Generate
             // 
             this.grp_Generate.Controls.Add(this.btn_Generate);
             this.grp_Generate.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grp_Generate.ForeColor = System.Drawing.Color.DarkGray;
-            this.grp_Generate.Location = new System.Drawing.Point(475, 590);
+            this.grp_Generate.Location = new System.Drawing.Point(475, 584);
             this.grp_Generate.Name = "grp_Generate";
             this.grp_Generate.Size = new System.Drawing.Size(138, 83);
             this.grp_Generate.TabIndex = 39;
@@ -127,7 +127,7 @@
             // pBox_Output
             // 
             this.pBox_Output.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pBox_Output.Location = new System.Drawing.Point(48, 56);
+            this.pBox_Output.Location = new System.Drawing.Point(48, 50);
             this.pBox_Output.Name = "pBox_Output";
             this.pBox_Output.Size = new System.Drawing.Size(565, 531);
             this.pBox_Output.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -141,7 +141,7 @@
             this.panel_Top.Controls.Add(this.btn_Minimize);
             this.panel_Top.Location = new System.Drawing.Point(0, 0);
             this.panel_Top.Name = "panel_Top";
-            this.panel_Top.Size = new System.Drawing.Size(660, 46);
+            this.panel_Top.Size = new System.Drawing.Size(660, 35);
             this.panel_Top.TabIndex = 19;
             // 
             // btn_Close
@@ -196,7 +196,7 @@
             this.grp_Output.Controls.Add(this.btn_OutputText);
             this.grp_Output.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grp_Output.ForeColor = System.Drawing.Color.DarkGray;
-            this.grp_Output.Location = new System.Drawing.Point(45, 590);
+            this.grp_Output.Location = new System.Drawing.Point(45, 584);
             this.grp_Output.Name = "grp_Output";
             this.grp_Output.Size = new System.Drawing.Size(402, 66);
             this.grp_Output.TabIndex = 26;

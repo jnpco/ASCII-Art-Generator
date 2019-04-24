@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using Core;
+using System.IO;
 
 namespace Winforms
 {
@@ -170,15 +171,56 @@ namespace Winforms
             switch (saveMode)
             {
                 case SaveMode.TEXT:
+                    SaveToText();
                     break;
                 case SaveMode.IMAGE:
+                    SaveToImage();
                     break;
                 case SaveMode.HTML:
+                    SaveToHTML();
                     break;
                 default:
                     break;
             }
         }
+
+        private void SaveToText()
+        {
+            if (pBox_Output.Image == null)
+            {
+                Shake();
+                new MessageBox(this, "Generate before saving.").Show();
+                return;
+            }
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Text files (*.txt)|*.txt;";
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                string path = sfd.FileName;
+                BinaryWriter writer = new BinaryWriter(File.Create(path));
+                writer.Write(GenerateASCIIString((Bitmap)pBox_Input.Image));
+                writer.Close();
+            }
+        }
+
+        private void SaveToImage()
+        {
+            if(pBox_Output.Image == null)
+            {
+                Shake();
+                new MessageBox(this, "Generate before saving.").Show();
+                return;
+            }
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Bitmap Image (.bmp)|*.bmp|Gif Image (.gif)|*.gif|JPEG Image (.jpeg)|*.jpeg|Png Image (.png)|*.png|Tiff Image (.tiff)|*.tiff|Wmf Image (.wmf)|*.wmf"; ;
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                string path = sfd.FileName;
+                pBox_Output.Image.Save(path);
+            }
+        }
+
+        private void SaveToHTML() { }
 
         private string GenerateASCIIString(Bitmap image)
         {
