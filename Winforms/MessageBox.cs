@@ -25,11 +25,13 @@ namespace Winforms
             InitializeComponent();
             this.parent = parent;
             this.message = message;
-            this.parent.Enabled = false;
         }
 
         private void MessageBox_Load(object sender, EventArgs e)
         {
+            this.parent.Enabled = false;
+            this.Location = new Point(this.parent.Location.X + this.parent.Width / 2 - this.Height / 2, this.parent.Location.Y + this.parent.Height / 2 - this.Height / 2);
+
             panel_Message.Paint += (s, pe) =>
             {
                 StringFormat sf = new StringFormat();
