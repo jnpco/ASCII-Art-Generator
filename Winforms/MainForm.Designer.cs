@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panel_Right = new System.Windows.Forms.Panel();
             this.btn_Generate = new System.Windows.Forms.Button();
-            this.lbl_Log = new System.Windows.Forms.Label();
             this.panel_Top = new System.Windows.Forms.Panel();
             this.grp_Output = new System.Windows.Forms.GroupBox();
             this.grp_Settings = new System.Windows.Forms.GroupBox();
@@ -57,10 +56,12 @@
             this.btn_Close = new System.Windows.Forms.Button();
             this.btn_Info = new System.Windows.Forms.Button();
             this.btn_Minimize = new System.Windows.Forms.Button();
-            this.pBox_Input = new System.Windows.Forms.PictureBox();
-            this.btn_OutputHTML1 = new System.Windows.Forms.Button();
+            this.btn_OutputHTML = new System.Windows.Forms.Button();
             this.btn_OutputImage = new System.Windows.Forms.Button();
             this.btn_OutputText = new System.Windows.Forms.Button();
+            this.pBox_Input = new System.Windows.Forms.PictureBox();
+            this.grp_Generate = new System.Windows.Forms.GroupBox();
+            this.lbl_Log = new System.Windows.Forms.Label();
             this.panel_Right.SuspendLayout();
             this.panel_Top.SuspendLayout();
             this.grp_Output.SuspendLayout();
@@ -68,14 +69,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.slider_Contrast)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBox_Output)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBox_Input)).BeginInit();
+            this.grp_Generate.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_Right
             // 
             this.panel_Right.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(44)))));
-            this.panel_Right.Controls.Add(this.btn_Generate);
-            this.panel_Right.Controls.Add(this.pBox_Output);
             this.panel_Right.Controls.Add(this.lbl_Log);
+            this.panel_Right.Controls.Add(this.grp_Generate);
+            this.panel_Right.Controls.Add(this.pBox_Output);
             this.panel_Right.Controls.Add(this.panel_Top);
             this.panel_Right.Controls.Add(this.grp_Output);
             this.panel_Right.Dock = System.Windows.Forms.DockStyle.Right;
@@ -86,30 +88,18 @@
             // 
             // btn_Generate
             // 
-            this.btn_Generate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
+            this.btn_Generate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(44)))));
             this.btn_Generate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_Generate.FlatAppearance.BorderSize = 0;
             this.btn_Generate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Generate.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Generate.ForeColor = System.Drawing.Color.DarkGray;
-            this.btn_Generate.Location = new System.Drawing.Point(466, 605);
+            this.btn_Generate.Image = global::Winforms.Properties.Resources.generate;
+            this.btn_Generate.Location = new System.Drawing.Point(6, 15);
             this.btn_Generate.Name = "btn_Generate";
-            this.btn_Generate.Size = new System.Drawing.Size(147, 58);
+            this.btn_Generate.Size = new System.Drawing.Size(126, 62);
             this.btn_Generate.TabIndex = 13;
-            this.btn_Generate.Text = "Generate";
             this.btn_Generate.UseVisualStyleBackColor = false;
-            // 
-            // lbl_Log
-            // 
-            this.lbl_Log.AutoSize = true;
-            this.lbl_Log.ForeColor = System.Drawing.Color.Gray;
-            this.lbl_Log.Location = new System.Drawing.Point(448, 659);
-            this.lbl_Log.MinimumSize = new System.Drawing.Size(200, 0);
-            this.lbl_Log.Name = "lbl_Log";
-            this.lbl_Log.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lbl_Log.Size = new System.Drawing.Size(200, 13);
-            this.lbl_Log.TabIndex = 20;
-            this.lbl_Log.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel_Top
             // 
@@ -123,14 +113,14 @@
             // 
             // grp_Output
             // 
-            this.grp_Output.Controls.Add(this.btn_OutputHTML1);
+            this.grp_Output.Controls.Add(this.btn_OutputHTML);
             this.grp_Output.Controls.Add(this.btn_OutputImage);
             this.grp_Output.Controls.Add(this.btn_OutputText);
             this.grp_Output.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grp_Output.ForeColor = System.Drawing.Color.DarkGray;
             this.grp_Output.Location = new System.Drawing.Point(45, 590);
             this.grp_Output.Name = "grp_Output";
-            this.grp_Output.Size = new System.Drawing.Size(374, 83);
+            this.grp_Output.Size = new System.Drawing.Size(402, 66);
             this.grp_Output.TabIndex = 26;
             this.grp_Output.TabStop = false;
             this.grp_Output.Text = "SAVE";
@@ -157,9 +147,10 @@
             // 
             // cBox_FontSize
             // 
-            this.cBox_FontSize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(99)))));
+            this.cBox_FontSize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
             this.cBox_FontSize.DropDownHeight = 100;
             this.cBox_FontSize.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cBox_FontSize.ForeColor = System.Drawing.Color.DarkGray;
             this.cBox_FontSize.FormattingEnabled = true;
             this.cBox_FontSize.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.cBox_FontSize.IntegralHeight = false;
@@ -171,10 +162,11 @@
             // 
             // cBox_FontName
             // 
-            this.cBox_FontName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(99)))));
+            this.cBox_FontName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
             this.cBox_FontName.DropDownHeight = 100;
             this.cBox_FontName.DropDownWidth = 200;
             this.cBox_FontName.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cBox_FontName.ForeColor = System.Drawing.Color.DarkGray;
             this.cBox_FontName.FormattingEnabled = true;
             this.cBox_FontName.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.cBox_FontName.IntegralHeight = false;
@@ -199,28 +191,28 @@
             this.lbl_Height.AutoSize = true;
             this.lbl_Height.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Height.ForeColor = System.Drawing.Color.DarkGray;
-            this.lbl_Height.Location = new System.Drawing.Point(110, 60);
+            this.lbl_Height.Location = new System.Drawing.Point(109, 60);
             this.lbl_Height.Name = "lbl_Height";
-            this.lbl_Height.Size = new System.Drawing.Size(16, 16);
+            this.lbl_Height.Size = new System.Drawing.Size(19, 16);
             this.lbl_Height.TabIndex = 27;
-            this.lbl_Height.Text = "H";
+            this.lbl_Height.Text = "H:";
             // 
             // lbl_Width
             // 
             this.lbl_Width.AutoSize = true;
             this.lbl_Width.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Width.ForeColor = System.Drawing.Color.DarkGray;
-            this.lbl_Width.Location = new System.Drawing.Point(46, 60);
+            this.lbl_Width.Location = new System.Drawing.Point(45, 60);
             this.lbl_Width.Name = "lbl_Width";
-            this.lbl_Width.Size = new System.Drawing.Size(19, 16);
+            this.lbl_Width.Size = new System.Drawing.Size(22, 16);
             this.lbl_Width.TabIndex = 26;
-            this.lbl_Width.Text = "W";
+            this.lbl_Width.Text = "W:";
             // 
             // txt_Height
             // 
-            this.txt_Height.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(99)))));
+            this.txt_Height.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
             this.txt_Height.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Height.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txt_Height.ForeColor = System.Drawing.Color.DarkGray;
             this.txt_Height.Location = new System.Drawing.Point(128, 56);
             this.txt_Height.MaxLength = 6;
             this.txt_Height.Name = "txt_Height";
@@ -229,9 +221,9 @@
             // 
             // txt_Width
             // 
-            this.txt_Width.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(99)))));
+            this.txt_Width.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
             this.txt_Width.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Width.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txt_Width.ForeColor = System.Drawing.Color.DarkGray;
             this.txt_Width.Location = new System.Drawing.Point(66, 56);
             this.txt_Width.MaxLength = 6;
             this.txt_Width.Name = "txt_Width";
@@ -432,32 +424,22 @@
             this.btn_Minimize.TabIndex = 19;
             this.btn_Minimize.UseVisualStyleBackColor = false;
             // 
-            // pBox_Input
+            // btn_OutputHTML
             // 
-            this.pBox_Input.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pBox_Input.Location = new System.Drawing.Point(31, 30);
-            this.pBox_Input.Name = "pBox_Input";
-            this.pBox_Input.Size = new System.Drawing.Size(250, 250);
-            this.pBox_Input.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pBox_Input.TabIndex = 20;
-            this.pBox_Input.TabStop = false;
-            // 
-            // btn_OutputHTML1
-            // 
-            this.btn_OutputHTML1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(44)))));
-            this.btn_OutputHTML1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_OutputHTML1.FlatAppearance.BorderSize = 0;
-            this.btn_OutputHTML1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_OutputHTML1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_OutputHTML1.ForeColor = System.Drawing.Color.DarkGray;
-            this.btn_OutputHTML1.Image = global::Winforms.Properties.Resources.html;
-            this.btn_OutputHTML1.Location = new System.Drawing.Point(240, 19);
-            this.btn_OutputHTML1.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_OutputHTML1.Name = "btn_OutputHTML1";
-            this.btn_OutputHTML1.Size = new System.Drawing.Size(85, 50);
-            this.btn_OutputHTML1.TabIndex = 38;
-            this.btn_OutputHTML1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_OutputHTML1.UseVisualStyleBackColor = false;
+            this.btn_OutputHTML.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(44)))));
+            this.btn_OutputHTML.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_OutputHTML.FlatAppearance.BorderSize = 0;
+            this.btn_OutputHTML.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_OutputHTML.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_OutputHTML.ForeColor = System.Drawing.Color.DarkGray;
+            this.btn_OutputHTML.Image = global::Winforms.Properties.Resources.html;
+            this.btn_OutputHTML.Location = new System.Drawing.Point(269, 12);
+            this.btn_OutputHTML.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_OutputHTML.Name = "btn_OutputHTML";
+            this.btn_OutputHTML.Size = new System.Drawing.Size(85, 50);
+            this.btn_OutputHTML.TabIndex = 38;
+            this.btn_OutputHTML.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_OutputHTML.UseVisualStyleBackColor = false;
             // 
             // btn_OutputImage
             // 
@@ -468,7 +450,7 @@
             this.btn_OutputImage.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_OutputImage.ForeColor = System.Drawing.Color.DarkGray;
             this.btn_OutputImage.Image = global::Winforms.Properties.Resources.image;
-            this.btn_OutputImage.Location = new System.Drawing.Point(148, 19);
+            this.btn_OutputImage.Location = new System.Drawing.Point(163, 12);
             this.btn_OutputImage.Margin = new System.Windows.Forms.Padding(0);
             this.btn_OutputImage.Name = "btn_OutputImage";
             this.btn_OutputImage.Size = new System.Drawing.Size(85, 50);
@@ -485,13 +467,46 @@
             this.btn_OutputText.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_OutputText.ForeColor = System.Drawing.Color.DarkGray;
             this.btn_OutputText.Image = global::Winforms.Properties.Resources.note;
-            this.btn_OutputText.Location = new System.Drawing.Point(55, 19);
+            this.btn_OutputText.Location = new System.Drawing.Point(60, 12);
             this.btn_OutputText.Margin = new System.Windows.Forms.Padding(0);
             this.btn_OutputText.Name = "btn_OutputText";
             this.btn_OutputText.Size = new System.Drawing.Size(85, 50);
             this.btn_OutputText.TabIndex = 36;
             this.btn_OutputText.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_OutputText.UseVisualStyleBackColor = false;
+            // 
+            // pBox_Input
+            // 
+            this.pBox_Input.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pBox_Input.Location = new System.Drawing.Point(31, 30);
+            this.pBox_Input.Name = "pBox_Input";
+            this.pBox_Input.Size = new System.Drawing.Size(250, 250);
+            this.pBox_Input.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pBox_Input.TabIndex = 20;
+            this.pBox_Input.TabStop = false;
+            // 
+            // grp_Generate
+            // 
+            this.grp_Generate.Controls.Add(this.btn_Generate);
+            this.grp_Generate.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grp_Generate.ForeColor = System.Drawing.Color.DarkGray;
+            this.grp_Generate.Location = new System.Drawing.Point(475, 590);
+            this.grp_Generate.Name = "grp_Generate";
+            this.grp_Generate.Size = new System.Drawing.Size(138, 83);
+            this.grp_Generate.TabIndex = 39;
+            this.grp_Generate.TabStop = false;
+            this.grp_Generate.Text = "GENERATE";
+            // 
+            // lbl_Log
+            // 
+            this.lbl_Log.AutoSize = true;
+            this.lbl_Log.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Log.ForeColor = System.Drawing.Color.DarkGray;
+            this.lbl_Log.Location = new System.Drawing.Point(45, 658);
+            this.lbl_Log.Name = "lbl_Log";
+            this.lbl_Log.Size = new System.Drawing.Size(277, 16);
+            this.lbl_Log.TabIndex = 30;
+            this.lbl_Log.Text = "DRAG IMAGE AND CLICK GENERATE TO PREVIEW...";
             // 
             // MainForm
             // 
@@ -526,6 +541,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.slider_Contrast)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBox_Output)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBox_Input)).EndInit();
+            this.grp_Generate.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -548,7 +564,6 @@
         private System.Windows.Forms.Label lbl_ContrastMinimum;
         private System.Windows.Forms.TrackBar slider_Contrast;
         private System.Windows.Forms.PictureBox pBox_Input;
-        private System.Windows.Forms.Label lbl_Log;
         private System.Windows.Forms.PictureBox pBox_Output;
         private System.Windows.Forms.Label lbl_Height;
         private System.Windows.Forms.Label lbl_Width;
@@ -561,9 +576,11 @@
         private System.Windows.Forms.ComboBox cBox_FontName;
         private System.Windows.Forms.ComboBox cBox_FontSize;
         private System.Windows.Forms.Panel panel_RampConfig;
-        private System.Windows.Forms.Button btn_OutputHTML1;
+        private System.Windows.Forms.Button btn_OutputHTML;
         private System.Windows.Forms.Button btn_OutputImage;
         private System.Windows.Forms.Button btn_OutputText;
+        private System.Windows.Forms.GroupBox grp_Generate;
+        private System.Windows.Forms.Label lbl_Log;
     }
 }
 

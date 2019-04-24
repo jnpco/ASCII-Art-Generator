@@ -92,6 +92,7 @@
     <Content Include="Resources\Icon\colored.png" />
     <Content Include="Resources\Icon\cross.png" />
     <Content Include="Resources\Icon\custom.png" />
+    <Content Include="Resources\Icon\generate.png" />
     <Content Include="Resources\Icon\greyscale.png" />
     <Content Include="Resources\Icon\html.png" />
     <Content Include="Resources\Icon\image.png" />
