@@ -17,12 +17,15 @@ namespace Winforms
         public static extern bool ReleaseCapture();
         #endregion
 
+        private Form parent;
         private string message;
 
-        public MessageBox(string message)
+        public MessageBox(Form parent, string message)
         {
             InitializeComponent();
+            this.parent = parent;
             this.message = message;
+            this.parent.Enabled = false;
         }
 
         private void MessageBox_Load(object sender, EventArgs e)
@@ -50,12 +53,18 @@ namespace Winforms
             panel_Top.MouseMove += (s, e) => { if (e.Button == MouseButtons.Left) { ReleaseCapture(); SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0); } };
 
             // Handle Titlebar clicks
-            btn_Close.Click += (s, e) => this.Close();
+            btn_Close.Click += (s, e) => CloseMessage();
         }
 
         private void InitButtons()
         {
-            btn_Ok.Click += (s, e) => this.Close();
+            btn_Ok.Click += (s, e) => CloseMessage();
+        }
+
+        private void CloseMessage()
+        {
+            this.parent.Enabled = true;
+            this.Close();
         }
     }
 }

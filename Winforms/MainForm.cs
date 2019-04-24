@@ -128,7 +128,9 @@ namespace Winforms
                 if (image != null)
                     pBox_Output.Image = GenerateASCIIImage(GenerateASCIIString(image));
                 else
-                    new MessageBox("Add input image before clicking generate.Add input image before clicking generate.Add input image before clicking generate.").Show() ;
+                {
+                    new MessageBox(this, "Add input image before clicking generate.Add input image before clicking generate.Add input image before clicking generate.").Show();
+                }
             };
         }
 
