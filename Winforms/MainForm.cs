@@ -53,9 +53,25 @@ namespace Winforms
             {
                 foreach (FontFamily fontFamily in FontFamily.Families)
                 {
+                    if(IsFixedWidth(pe.Graphics, fontFamily))
                     cBox_FontName.Items.Add(fontFamily.Name.ToString());
                 }
             };
+        }
+
+        public bool IsFixedWidth(Graphics g, FontFamily fontFamily)
+        {
+            char[] charSizes = new char[] { 'i', 'a', 'Z', '%', '#', 'a', 'B', 'l', 'm', ',', '.' };
+            Font font = new Font(fontFamily, Int32.Parse(cBox_FontSize.Text));
+            float charWidth = g.MeasureString("I", font).Width;
+
+            bool fixedWidth = true;
+
+            foreach (char c in charSizes)
+                if (g.MeasureString(c.ToString(), font).Width != charWidth)
+                    fixedWidth = false;
+
+            return fixedWidth;
         }
 
         private void InitComponents()
