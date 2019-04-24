@@ -2,29 +2,19 @@
 
 ASCII generator program than can convert an image into an ascii art, and that ascii art, into an image. 
 Included are some image manipulation utility methods like grayscaling, contrast adjustment, and resizing.
-
-Grayscaling and constrast adjustment methods use Lockbits instead of getPixels for a faster performance.
-
 Windows GUI is made with Winforms.
 
 ## Demo
 
-*Generates ascii string from image file.*
-<img src="Core/Demo/README/ImgToASCII.PNG" alt="ImgToASCII">
-
-*Generates image from ascii string.*
-<img src="Core/Demo/README/ASCIIToImg.PNG" alt="ASCIIToImg">
-
-## Screenshots
-
-<img src="Core/Demo/README/Original.png" height="300" alt="Original"> <img src="Core/Demo/README/Text.PNG" height="300" alt="asciiTextFile"> <img src="Core/Demo/README/img.PNG" height="300" alt="asciiStringToImg">
+<img src="Demo/home.png" height="300" alt="home"> <img src="Demo/text.png" height="300" alt="text"> <img src="Demo/image.png" height="300" alt="image">
 
 ## Samples
 
-[Samples folder](https://github.com/jnpco/ASCII-art/tree/master/ASCII-art/Demo/Samples)
+[Check out *_demo files to see output.](https://github.com/jnpco/ASCIIfy/tree/master/Demo)
 
 - [ ] Make a web api. Most probably using AWS Lambda.
 - [ ] Add limits to img sizes.
-- [ ] Add color options for html.
+- [ ] Add html support.
+- [ ] Add color options for image and html.
 - [ ] Fix aspect ratio.
 - [ ] Rewrite core to c++ and GUI to Electron
