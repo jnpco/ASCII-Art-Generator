@@ -122,7 +122,14 @@ namespace Winforms
             btn_OutputText.Click += (s, e) => { SaveOutput(SaveMode.TEXT); };
             btn_OutputImage.Click += (s, e) => { SaveOutput(SaveMode.IMAGE); };
             btn_OutputHTML.Click += (s, e) => { SaveOutput(SaveMode.HTML); };
-            btn_Generate.Click += (s, e) => { pBox_Output.Image = GenerateASCIIImage(GenerateASCIIString()); };
+            btn_Generate.Click += (s, e) => 
+            {
+                Bitmap image = (Bitmap)pBox_Input.Image;
+                if (image != null)
+                    pBox_Output.Image = GenerateASCIIImage(GenerateASCIIString(image));
+                else
+                    new MessageBox("Add input image before clicking generate.Add input image before clicking generate.Add input image before clicking generate.").Show() ;
+            };
         }
 
         public bool IsFixedWidth(Graphics g, FontFamily fontFamily)
@@ -170,7 +177,7 @@ namespace Winforms
             }
         }
 
-        private string GenerateASCIIString()
+        private string GenerateASCIIString(Bitmap image)
         {
             int width;
             int contrast = slider_Contrast.Value * 10;
@@ -182,7 +189,7 @@ namespace Winforms
                 txt_Width.Text = width.ToString();
             }
 
-            return new ASCIIGenerator() { BlackBG = false } .GenerateASCII((Bitmap)pBox_Input.Image, width, contrast);
+            return new ASCIIGenerator() { BlackBG = false } .GenerateASCII(image, width, contrast);
         }
 
         private Bitmap GenerateASCIIImage(string ascii)
