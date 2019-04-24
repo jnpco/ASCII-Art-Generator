@@ -31,16 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panel_Right = new System.Windows.Forms.Panel();
             this.btn_Generate = new System.Windows.Forms.Button();
-            this.pBox_Output = new System.Windows.Forms.PictureBox();
             this.lbl_Log = new System.Windows.Forms.Label();
             this.panel_Top = new System.Windows.Forms.Panel();
-            this.btn_Close = new System.Windows.Forms.Button();
-            this.btn_Info = new System.Windows.Forms.Button();
-            this.btn_Minimize = new System.Windows.Forms.Button();
             this.grp_Output = new System.Windows.Forms.GroupBox();
-            this.btn_OutputHTML = new System.Windows.Forms.Button();
-            this.btn_OutputImage = new System.Windows.Forms.Button();
-            this.btn_OutputText = new System.Windows.Forms.Button();
             this.grp_Settings = new System.Windows.Forms.GroupBox();
             this.cBox_FontSize = new System.Windows.Forms.ComboBox();
             this.cBox_FontName = new System.Windows.Forms.ComboBox();
@@ -60,13 +53,20 @@
             this.btn_SettingsCustom = new System.Windows.Forms.Button();
             this.btn_SettingsColored = new System.Windows.Forms.Button();
             this.btn_SettingsGreyscaled = new System.Windows.Forms.Button();
+            this.pBox_Output = new System.Windows.Forms.PictureBox();
+            this.btn_Close = new System.Windows.Forms.Button();
+            this.btn_Info = new System.Windows.Forms.Button();
+            this.btn_Minimize = new System.Windows.Forms.Button();
             this.pBox_Input = new System.Windows.Forms.PictureBox();
+            this.btn_OutputHTML1 = new System.Windows.Forms.Button();
+            this.btn_OutputImage = new System.Windows.Forms.Button();
+            this.btn_OutputText = new System.Windows.Forms.Button();
             this.panel_Right.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pBox_Output)).BeginInit();
             this.panel_Top.SuspendLayout();
             this.grp_Output.SuspendLayout();
             this.grp_Settings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.slider_Contrast)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pBox_Output)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBox_Input)).BeginInit();
             this.SuspendLayout();
             // 
@@ -99,16 +99,6 @@
             this.btn_Generate.Text = "Generate";
             this.btn_Generate.UseVisualStyleBackColor = false;
             // 
-            // pBox_Output
-            // 
-            this.pBox_Output.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pBox_Output.Location = new System.Drawing.Point(48, 56);
-            this.pBox_Output.Name = "pBox_Output";
-            this.pBox_Output.Size = new System.Drawing.Size(565, 531);
-            this.pBox_Output.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pBox_Output.TabIndex = 27;
-            this.pBox_Output.TabStop = false;
-            // 
             // lbl_Log
             // 
             this.lbl_Log.AutoSize = true;
@@ -131,54 +121,9 @@
             this.panel_Top.Size = new System.Drawing.Size(660, 46);
             this.panel_Top.TabIndex = 19;
             // 
-            // btn_Close
-            // 
-            this.btn_Close.BackColor = System.Drawing.Color.Transparent;
-            this.btn_Close.BackgroundImage = global::Winforms.Properties.Resources.cross;
-            this.btn_Close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_Close.FlatAppearance.BorderSize = 0;
-            this.btn_Close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Close.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Close.ForeColor = System.Drawing.Color.DarkGray;
-            this.btn_Close.Location = new System.Drawing.Point(630, 5);
-            this.btn_Close.Name = "btn_Close";
-            this.btn_Close.Size = new System.Drawing.Size(24, 24);
-            this.btn_Close.TabIndex = 21;
-            this.btn_Close.UseVisualStyleBackColor = false;
-            // 
-            // btn_Info
-            // 
-            this.btn_Info.BackColor = System.Drawing.Color.Transparent;
-            this.btn_Info.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_Info.BackgroundImage")));
-            this.btn_Info.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_Info.FlatAppearance.BorderSize = 0;
-            this.btn_Info.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Info.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Info.ForeColor = System.Drawing.Color.DarkGray;
-            this.btn_Info.Location = new System.Drawing.Point(600, 5);
-            this.btn_Info.Name = "btn_Info";
-            this.btn_Info.Size = new System.Drawing.Size(24, 24);
-            this.btn_Info.TabIndex = 20;
-            this.btn_Info.UseVisualStyleBackColor = false;
-            // 
-            // btn_Minimize
-            // 
-            this.btn_Minimize.BackColor = System.Drawing.Color.Transparent;
-            this.btn_Minimize.BackgroundImage = global::Winforms.Properties.Resources.minimize;
-            this.btn_Minimize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_Minimize.FlatAppearance.BorderSize = 0;
-            this.btn_Minimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Minimize.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Minimize.ForeColor = System.Drawing.Color.DarkGray;
-            this.btn_Minimize.Location = new System.Drawing.Point(570, 5);
-            this.btn_Minimize.Name = "btn_Minimize";
-            this.btn_Minimize.Size = new System.Drawing.Size(24, 24);
-            this.btn_Minimize.TabIndex = 19;
-            this.btn_Minimize.UseVisualStyleBackColor = false;
-            // 
             // grp_Output
             // 
-            this.grp_Output.Controls.Add(this.btn_OutputHTML);
+            this.grp_Output.Controls.Add(this.btn_OutputHTML1);
             this.grp_Output.Controls.Add(this.btn_OutputImage);
             this.grp_Output.Controls.Add(this.btn_OutputText);
             this.grp_Output.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -189,51 +134,6 @@
             this.grp_Output.TabIndex = 26;
             this.grp_Output.TabStop = false;
             this.grp_Output.Text = "SAVE";
-            // 
-            // btn_OutputHTML
-            // 
-            this.btn_OutputHTML.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
-            this.btn_OutputHTML.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_OutputHTML.FlatAppearance.BorderSize = 0;
-            this.btn_OutputHTML.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_OutputHTML.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_OutputHTML.ForeColor = System.Drawing.Color.DarkGray;
-            this.btn_OutputHTML.Location = new System.Drawing.Point(240, 22);
-            this.btn_OutputHTML.Name = "btn_OutputHTML";
-            this.btn_OutputHTML.Size = new System.Drawing.Size(83, 45);
-            this.btn_OutputHTML.TabIndex = 12;
-            this.btn_OutputHTML.Text = "HTML";
-            this.btn_OutputHTML.UseVisualStyleBackColor = false;
-            // 
-            // btn_OutputImage
-            // 
-            this.btn_OutputImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
-            this.btn_OutputImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_OutputImage.FlatAppearance.BorderSize = 0;
-            this.btn_OutputImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_OutputImage.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_OutputImage.ForeColor = System.Drawing.Color.DarkGray;
-            this.btn_OutputImage.Location = new System.Drawing.Point(151, 22);
-            this.btn_OutputImage.Name = "btn_OutputImage";
-            this.btn_OutputImage.Size = new System.Drawing.Size(83, 45);
-            this.btn_OutputImage.TabIndex = 11;
-            this.btn_OutputImage.Text = "Image";
-            this.btn_OutputImage.UseVisualStyleBackColor = false;
-            // 
-            // btn_OutputText
-            // 
-            this.btn_OutputText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
-            this.btn_OutputText.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_OutputText.FlatAppearance.BorderSize = 0;
-            this.btn_OutputText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_OutputText.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_OutputText.ForeColor = System.Drawing.Color.DarkGray;
-            this.btn_OutputText.Location = new System.Drawing.Point(62, 22);
-            this.btn_OutputText.Name = "btn_OutputText";
-            this.btn_OutputText.Size = new System.Drawing.Size(83, 45);
-            this.btn_OutputText.TabIndex = 10;
-            this.btn_OutputText.Text = "Text";
-            this.btn_OutputText.UseVisualStyleBackColor = false;
             // 
             // grp_Settings
             // 
@@ -435,7 +335,7 @@
             this.btn_SettingsCustom.Name = "btn_SettingsCustom";
             this.btn_SettingsCustom.Size = new System.Drawing.Size(178, 48);
             this.btn_SettingsCustom.TabIndex = 28;
-            this.btn_SettingsCustom.Text = "        Custom";
+            this.btn_SettingsCustom.Text = "          Custom";
             this.btn_SettingsCustom.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_SettingsCustom.UseVisualStyleBackColor = false;
             // 
@@ -454,7 +354,7 @@
             this.btn_SettingsColored.Name = "btn_SettingsColored";
             this.btn_SettingsColored.Size = new System.Drawing.Size(178, 48);
             this.btn_SettingsColored.TabIndex = 27;
-            this.btn_SettingsColored.Text = "        Colored";
+            this.btn_SettingsColored.Text = "          Colored";
             this.btn_SettingsColored.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_SettingsColored.UseVisualStyleBackColor = false;
             // 
@@ -477,6 +377,61 @@
             this.btn_SettingsGreyscaled.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_SettingsGreyscaled.UseVisualStyleBackColor = false;
             // 
+            // pBox_Output
+            // 
+            this.pBox_Output.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pBox_Output.Location = new System.Drawing.Point(48, 56);
+            this.pBox_Output.Name = "pBox_Output";
+            this.pBox_Output.Size = new System.Drawing.Size(565, 531);
+            this.pBox_Output.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pBox_Output.TabIndex = 27;
+            this.pBox_Output.TabStop = false;
+            // 
+            // btn_Close
+            // 
+            this.btn_Close.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Close.BackgroundImage = global::Winforms.Properties.Resources.cross;
+            this.btn_Close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_Close.FlatAppearance.BorderSize = 0;
+            this.btn_Close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Close.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Close.ForeColor = System.Drawing.Color.DarkGray;
+            this.btn_Close.Location = new System.Drawing.Point(630, 5);
+            this.btn_Close.Name = "btn_Close";
+            this.btn_Close.Size = new System.Drawing.Size(24, 24);
+            this.btn_Close.TabIndex = 21;
+            this.btn_Close.UseVisualStyleBackColor = false;
+            // 
+            // btn_Info
+            // 
+            this.btn_Info.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Info.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_Info.BackgroundImage")));
+            this.btn_Info.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_Info.FlatAppearance.BorderSize = 0;
+            this.btn_Info.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Info.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Info.ForeColor = System.Drawing.Color.DarkGray;
+            this.btn_Info.Location = new System.Drawing.Point(600, 5);
+            this.btn_Info.Name = "btn_Info";
+            this.btn_Info.Size = new System.Drawing.Size(24, 24);
+            this.btn_Info.TabIndex = 20;
+            this.btn_Info.UseVisualStyleBackColor = false;
+            // 
+            // btn_Minimize
+            // 
+            this.btn_Minimize.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Minimize.BackgroundImage = global::Winforms.Properties.Resources.minimize;
+            this.btn_Minimize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_Minimize.FlatAppearance.BorderSize = 0;
+            this.btn_Minimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Minimize.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Minimize.ForeColor = System.Drawing.Color.DarkGray;
+            this.btn_Minimize.Location = new System.Drawing.Point(570, 5);
+            this.btn_Minimize.Name = "btn_Minimize";
+            this.btn_Minimize.Size = new System.Drawing.Size(24, 24);
+            this.btn_Minimize.TabIndex = 19;
+            this.btn_Minimize.UseVisualStyleBackColor = false;
+            // 
             // pBox_Input
             // 
             this.pBox_Input.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -486,6 +441,57 @@
             this.pBox_Input.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pBox_Input.TabIndex = 20;
             this.pBox_Input.TabStop = false;
+            // 
+            // btn_OutputHTML1
+            // 
+            this.btn_OutputHTML1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(44)))));
+            this.btn_OutputHTML1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_OutputHTML1.FlatAppearance.BorderSize = 0;
+            this.btn_OutputHTML1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_OutputHTML1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_OutputHTML1.ForeColor = System.Drawing.Color.DarkGray;
+            this.btn_OutputHTML1.Image = global::Winforms.Properties.Resources.html;
+            this.btn_OutputHTML1.Location = new System.Drawing.Point(240, 19);
+            this.btn_OutputHTML1.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_OutputHTML1.Name = "btn_OutputHTML1";
+            this.btn_OutputHTML1.Size = new System.Drawing.Size(85, 50);
+            this.btn_OutputHTML1.TabIndex = 38;
+            this.btn_OutputHTML1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_OutputHTML1.UseVisualStyleBackColor = false;
+            // 
+            // btn_OutputImage
+            // 
+            this.btn_OutputImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(44)))));
+            this.btn_OutputImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_OutputImage.FlatAppearance.BorderSize = 0;
+            this.btn_OutputImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_OutputImage.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_OutputImage.ForeColor = System.Drawing.Color.DarkGray;
+            this.btn_OutputImage.Image = global::Winforms.Properties.Resources.image;
+            this.btn_OutputImage.Location = new System.Drawing.Point(148, 19);
+            this.btn_OutputImage.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_OutputImage.Name = "btn_OutputImage";
+            this.btn_OutputImage.Size = new System.Drawing.Size(85, 50);
+            this.btn_OutputImage.TabIndex = 37;
+            this.btn_OutputImage.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_OutputImage.UseVisualStyleBackColor = false;
+            // 
+            // btn_OutputText
+            // 
+            this.btn_OutputText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(44)))));
+            this.btn_OutputText.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_OutputText.FlatAppearance.BorderSize = 0;
+            this.btn_OutputText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_OutputText.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_OutputText.ForeColor = System.Drawing.Color.DarkGray;
+            this.btn_OutputText.Image = global::Winforms.Properties.Resources.note;
+            this.btn_OutputText.Location = new System.Drawing.Point(55, 19);
+            this.btn_OutputText.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_OutputText.Name = "btn_OutputText";
+            this.btn_OutputText.Size = new System.Drawing.Size(85, 50);
+            this.btn_OutputText.TabIndex = 36;
+            this.btn_OutputText.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_OutputText.UseVisualStyleBackColor = false;
             // 
             // MainForm
             // 
@@ -513,12 +519,12 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.panel_Right.ResumeLayout(false);
             this.panel_Right.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pBox_Output)).EndInit();
             this.panel_Top.ResumeLayout(false);
             this.grp_Output.ResumeLayout(false);
             this.grp_Settings.ResumeLayout(false);
             this.grp_Settings.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.slider_Contrast)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pBox_Output)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBox_Input)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -532,9 +538,6 @@
         private System.Windows.Forms.Button btn_Info;
         private System.Windows.Forms.Button btn_Minimize;
         private System.Windows.Forms.GroupBox grp_Output;
-        private System.Windows.Forms.Button btn_OutputHTML;
-        private System.Windows.Forms.Button btn_OutputImage;
-        private System.Windows.Forms.Button btn_OutputText;
         private System.Windows.Forms.GroupBox grp_Settings;
         private System.Windows.Forms.TextBox txt_Height;
         private System.Windows.Forms.TextBox txt_Width;
@@ -558,6 +561,9 @@
         private System.Windows.Forms.ComboBox cBox_FontName;
         private System.Windows.Forms.ComboBox cBox_FontSize;
         private System.Windows.Forms.Panel panel_RampConfig;
+        private System.Windows.Forms.Button btn_OutputHTML1;
+        private System.Windows.Forms.Button btn_OutputImage;
+        private System.Windows.Forms.Button btn_OutputText;
     }
 }
 

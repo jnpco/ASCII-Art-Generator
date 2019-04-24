@@ -121,7 +121,7 @@ namespace Winforms
             // Handle Save and Generate clicks
             btn_OutputText.Click += (s, e) => { SaveOutput(SaveMode.TEXT); };
             btn_OutputImage.Click += (s, e) => { SaveOutput(SaveMode.IMAGE); };
-            btn_OutputHTML.Click += (s, e) => { SaveOutput(SaveMode.HTML); };
+            btn_OutputHTML1.Click += (s, e) => { SaveOutput(SaveMode.HTML); };
             btn_Generate.Click += (s, e) => { pBox_Output.Image = GenerateASCIIImage(GenerateASCIIString()); };
         }
 
