@@ -7,6 +7,7 @@ using System.IO;
 
 namespace Winforms
 {
+    // TODO Add custom open and save dialog file.
     struct ColorModeSwitch
     {
         public enum Mode { GREYSCALED, COLORED, CUSTOM }
@@ -131,7 +132,7 @@ namespace Winforms
                 else
                 {
                     Shake();
-                    new MessageBox(this, "Add input image before clicking generate.Add input image before clicking generate.Add input image before clicking generate.").Show();
+                    new MessageBox(this, "Add input image before clicking generate.").Show();
                 }
             };
         }

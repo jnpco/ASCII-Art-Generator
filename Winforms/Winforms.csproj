@@ -99,6 +99,8 @@
   <ItemGroup />
   <ItemGroup>
     <None Include="Resources\Icon\border.png" />
+    <Content Include="Resources\Icon\ASCIIfy_icon.ico" />
+    <Content Include="Resources\Icon\ASCIIfy_logo.png" />
     <Content Include="Resources\Icon\drag_image.png" />
     <Content Include="Resources\Icon\colored.png" />
     <Content Include="Resources\Icon\cross.png" />
