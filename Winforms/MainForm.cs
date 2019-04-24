@@ -129,6 +129,7 @@ namespace Winforms
                     pBox_Output.Image = GenerateASCIIImage(GenerateASCIIString(image));
                 else
                 {
+                    Shake();
                     new MessageBox(this, "Add input image before clicking generate.Add input image before clicking generate.Add input image before clicking generate.").Show();
                 }
             };
@@ -198,6 +199,19 @@ namespace Winforms
         {
             Font font = new Font(cBox_FontName.Text, Int32.Parse(cBox_FontSize.Text));
             return new ASCIIGenerator().ASCIIToImage(ascii, pBox_Input.Width, font, Color.Black);
+        }
+
+        private void Shake()
+        {
+            Point original = this.Location;
+            Random rnd = new Random(1337);
+            const int amplitude = 10;
+
+            for(int i = 0; i < 10; i++)
+            {
+                this.Location = new Point(original.X + rnd.Next(-amplitude, amplitude), original.Y + rnd.Next(-amplitude, amplitude));
+                System.Threading.Thread.Sleep(20);
+            }
         }
     }
 }
