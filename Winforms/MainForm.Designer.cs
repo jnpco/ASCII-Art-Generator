@@ -42,6 +42,8 @@
             this.btn_OutputImage = new System.Windows.Forms.Button();
             this.btn_OutputText = new System.Windows.Forms.Button();
             this.grp_Settings = new System.Windows.Forms.GroupBox();
+            this.cBox_FontSize = new System.Windows.Forms.ComboBox();
+            this.cBox_FontName = new System.Windows.Forms.ComboBox();
             this.cBox_AspectRatio = new System.Windows.Forms.CheckBox();
             this.lbl_Height = new System.Windows.Forms.Label();
             this.lbl_Width = new System.Windows.Forms.Label();
@@ -57,10 +59,8 @@
             this.btn_SettingsCustom = new System.Windows.Forms.Button();
             this.btn_SettingsColored = new System.Windows.Forms.Button();
             this.btn_SettingsGreyscaled = new System.Windows.Forms.Button();
-            this.pBox_Logo = new System.Windows.Forms.PictureBox();
             this.lbl_Contrast = new System.Windows.Forms.Label();
-            this.cBox_FontName = new System.Windows.Forms.ComboBox();
-            this.cBox_FontSize = new System.Windows.Forms.ComboBox();
+            this.panel_RampConfig = new System.Windows.Forms.Panel();
             this.panel_Right.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pBox_Output)).BeginInit();
             this.panel_Top.SuspendLayout();
@@ -68,7 +68,6 @@
             this.grp_Settings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.slider_Contrast)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBox_Input)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pBox_Logo)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_Right
@@ -252,6 +251,35 @@
             this.grp_Settings.TabIndex = 24;
             this.grp_Settings.TabStop = false;
             this.grp_Settings.Text = "SETTINGS";
+            // 
+            // cBox_FontSize
+            // 
+            this.cBox_FontSize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(99)))));
+            this.cBox_FontSize.DropDownHeight = 100;
+            this.cBox_FontSize.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cBox_FontSize.FormattingEnabled = true;
+            this.cBox_FontSize.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.cBox_FontSize.IntegralHeight = false;
+            this.cBox_FontSize.ItemHeight = 16;
+            this.cBox_FontSize.Location = new System.Drawing.Point(55, 24);
+            this.cBox_FontSize.Name = "cBox_FontSize";
+            this.cBox_FontSize.Size = new System.Drawing.Size(45, 24);
+            this.cBox_FontSize.TabIndex = 29;
+            // 
+            // cBox_FontName
+            // 
+            this.cBox_FontName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(99)))));
+            this.cBox_FontName.DropDownHeight = 100;
+            this.cBox_FontName.DropDownWidth = 200;
+            this.cBox_FontName.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cBox_FontName.FormattingEnabled = true;
+            this.cBox_FontName.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.cBox_FontName.IntegralHeight = false;
+            this.cBox_FontName.ItemHeight = 16;
+            this.cBox_FontName.Location = new System.Drawing.Point(106, 24);
+            this.cBox_FontName.Name = "cBox_FontName";
+            this.cBox_FontName.Size = new System.Drawing.Size(60, 24);
+            this.cBox_FontName.TabIndex = 28;
             // 
             // cBox_AspectRatio
             // 
@@ -437,15 +465,6 @@
             this.btn_SettingsGreyscaled.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_SettingsGreyscaled.UseVisualStyleBackColor = false;
             // 
-            // pBox_Logo
-            // 
-            this.pBox_Logo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pBox_Logo.Location = new System.Drawing.Point(27, 377);
-            this.pBox_Logo.Name = "pBox_Logo";
-            this.pBox_Logo.Size = new System.Drawing.Size(90, 279);
-            this.pBox_Logo.TabIndex = 28;
-            this.pBox_Logo.TabStop = false;
-            // 
             // lbl_Contrast
             // 
             this.lbl_Contrast.AutoSize = true;
@@ -457,33 +476,13 @@
             this.lbl_Contrast.TabIndex = 29;
             this.lbl_Contrast.Text = "CONTRAST";
             // 
-            // cBox_FontName
+            // panel_RampConfig
             // 
-            this.cBox_FontName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(99)))));
-            this.cBox_FontName.DropDownHeight = 100;
-            this.cBox_FontName.DropDownWidth = 200;
-            this.cBox_FontName.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cBox_FontName.FormattingEnabled = true;
-            this.cBox_FontName.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.cBox_FontName.IntegralHeight = false;
-            this.cBox_FontName.ItemHeight = 16;
-            this.cBox_FontName.Location = new System.Drawing.Point(106, 24);
-            this.cBox_FontName.Name = "cBox_FontName";
-            this.cBox_FontName.Size = new System.Drawing.Size(60, 24);
-            this.cBox_FontName.TabIndex = 28;
-            // 
-            // cBox_FontSize
-            // 
-            this.cBox_FontSize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(99)))));
-            this.cBox_FontSize.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cBox_FontSize.FormattingEnabled = true;
-            this.cBox_FontSize.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.cBox_FontSize.ItemHeight = 16;
-            this.cBox_FontSize.Location = new System.Drawing.Point(55, 24);
-            this.cBox_FontSize.Name = "cBox_FontSize";
-            this.cBox_FontSize.Size = new System.Drawing.Size(45, 24);
-            this.cBox_FontSize.TabIndex = 29;
-            this.cBox_FontSize.Text = "14";
+            this.panel_RampConfig.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_RampConfig.Location = new System.Drawing.Point(31, 377);
+            this.panel_RampConfig.Name = "panel_RampConfig";
+            this.panel_RampConfig.Size = new System.Drawing.Size(91, 279);
+            this.panel_RampConfig.TabIndex = 28;
             // 
             // MainForm
             // 
@@ -492,8 +491,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(36)))));
             this.ClientSize = new System.Drawing.Size(969, 681);
+            this.Controls.Add(this.panel_RampConfig);
             this.Controls.Add(this.lbl_Contrast);
-            this.Controls.Add(this.pBox_Logo);
             this.Controls.Add(this.btn_SettingsCustom);
             this.Controls.Add(this.btn_SettingsColored);
             this.Controls.Add(this.btn_SettingsGreyscaled);
@@ -518,7 +517,6 @@
             this.grp_Settings.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.slider_Contrast)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBox_Input)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pBox_Logo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -552,11 +550,11 @@
         private System.Windows.Forms.Button btn_SettingsCustom;
         private System.Windows.Forms.Button btn_SettingsColored;
         private System.Windows.Forms.Button btn_SettingsGreyscaled;
-        private System.Windows.Forms.PictureBox pBox_Logo;
         private System.Windows.Forms.CheckBox cBox_AspectRatio;
         private System.Windows.Forms.Label lbl_Contrast;
         private System.Windows.Forms.ComboBox cBox_FontName;
         private System.Windows.Forms.ComboBox cBox_FontSize;
+        private System.Windows.Forms.Panel panel_RampConfig;
     }
 }
 

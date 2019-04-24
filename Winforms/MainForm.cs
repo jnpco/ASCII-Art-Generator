@@ -34,8 +34,8 @@ namespace Winforms
 
         private enum SaveMode { TEXT, IMAGE, HTML }
         
-        private ColorModeSwitch colorModeSelected;
         private ColorModeSwitch[] colorModes;
+        private ColorModeSwitch colorModeSelected;
 
         private Color colorModeActive;
         private Color colorModeInactive;
@@ -48,36 +48,13 @@ namespace Winforms
         private void MainForm_Load(object sender, EventArgs e)
         {
             InitComponents();
-            
-            this.Paint += (s, pe) =>
-            {
-                foreach (FontFamily fontFamily in FontFamily.Families)
-                {
-                    if(IsFixedWidth(pe.Graphics, fontFamily))
-                    cBox_FontName.Items.Add(fontFamily.Name.ToString());
-                }
-            };
         }
-
-        public bool IsFixedWidth(Graphics g, FontFamily fontFamily)
-        {
-            char[] charSizes = new char[] { 'i', 'a', 'Z', '%', '#', 'a', 'B', 'l', 'm', ',', '.' };
-            Font font = new Font(fontFamily, Int32.Parse(cBox_FontSize.Text));
-            float charWidth = g.MeasureString("I", font).Width;
-
-            bool fixedWidth = true;
-
-            foreach (char c in charSizes)
-                if (g.MeasureString(c.ToString(), font).Width != charWidth)
-                    fixedWidth = false;
-
-            return fixedWidth;
-        }
-
+        
         private void InitComponents()
         {
             InitTitleBar();
-            InitPBox(); 
+            InitIORender();
+            InitSettings();
             InitColorModes();
             InitOutputGenerate();
         }
@@ -93,12 +70,32 @@ namespace Winforms
             btn_Close.Click += (s, e) => { Application.Exit(); };
         }
 
-        private void InitPBox()
+        private void InitIORender()
         {
             // Handle P_Box events
             pBox_Input.AllowDrop = true;
             pBox_Input.DragEnter += (s, e) => { e.Effect = DragDropEffects.Copy; };
             pBox_Input.DragDrop += (s, e) => { pBox_Input.Image = Image.FromFile(((string[])e.Data.GetData(DataFormats.FileDrop))[0]); };
+        }
+
+        private void InitSettings()
+        {
+            int[] fontSizes = new int[] {8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72};
+            foreach (int size in fontSizes) { cBox_FontSize.Items.Add(size); };
+            this.Paint += (s, pe) =>
+            {
+                foreach (FontFamily fontFamily in FontFamily.Families)
+                {
+                    if (IsFixedWidth(pe.Graphics, fontFamily))
+                        cBox_FontName.Items.Add(fontFamily.Name.ToString());
+                }
+            };
+
+            cBox_FontName.SelectedText = "Lucida Console";
+            cBox_FontSize.SelectedText = "14";
+
+            cBox_FontName.AutoCompleteMode = AutoCompleteMode.Suggest;
+            cBox_FontName.AutoCompleteSource = AutoCompleteSource.ListItems;
         }
 
         private void InitColorModes()
@@ -128,6 +125,21 @@ namespace Winforms
             btn_Generate.Click += (s, e) => { pBox_Output.Image = GenerateASCIIImage(GenerateASCIIString()); };
         }
 
+        public bool IsFixedWidth(Graphics g, FontFamily fontFamily)
+        {
+            char[] charSizes = new char[] { 'i', 'a', 'Z', '%', '#', 'a', 'B', 'l', 'm', ',', '.' };
+            Font font = new Font(fontFamily, Int32.Parse(cBox_FontSize.Text));
+            float charWidth = g.MeasureString("I", font).Width;
+
+            bool fixedWidth = true;
+
+            foreach (char c in charSizes)
+                if (g.MeasureString(c.ToString(), font).Width != charWidth)
+                    fixedWidth = false;
+
+            return fixedWidth;
+        }
+        
         private void SetColorModeSelected(ColorModeSwitch colorMode)
         {
             colorModeSelected = colorMode;
@@ -178,6 +190,5 @@ namespace Winforms
             Font font = new Font(cBox_FontName.Text, Int32.Parse(cBox_FontSize.Text));
             return new ASCIIGenerator().ASCIIToImage(ascii, pBox_Input.Width, font, Color.Black);
         }
-
     }
 }
