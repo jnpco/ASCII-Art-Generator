@@ -66,7 +66,7 @@ namespace Winforms
 
             // Handle Titlebar clicks
             btn_Minimize.Click += (s, e) => { this.WindowState = FormWindowState.Minimized; };
-            btn_Info.Click += (s, e) => { };
+            btn_Info.Click += (s, e) => { new MessageBox(this, "ASCIIfy © 2019 by JNPCO").Show(); };
             btn_Close.Click += (s, e) => { Application.Exit(); };
         }
 
