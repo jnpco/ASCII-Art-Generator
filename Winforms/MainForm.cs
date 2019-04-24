@@ -39,7 +39,7 @@ namespace Winforms
 
         private Color colorModeActive;
         private Color colorModeInactive;
-
+        
         public MainForm()
         {
             InitializeComponent();
@@ -75,7 +75,7 @@ namespace Winforms
             // Handle P_Box events
             pBox_Input.AllowDrop = true;
             pBox_Input.DragEnter += (s, e) => { e.Effect = DragDropEffects.Copy; };
-            pBox_Input.DragDrop += (s, e) => { pBox_Input.Image = Image.FromFile(((string[])e.Data.GetData(DataFormats.FileDrop))[0]); };
+            pBox_Input.DragDrop += (s, e) => { pBox_Input.Image = Image.FromFile(((string[])e.Data.GetData(DataFormats.FileDrop))[0]); pBox_Input.BackgroundImage = Properties.Resources.border; };
         }
 
         private void InitSettings()
