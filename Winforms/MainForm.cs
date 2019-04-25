@@ -10,7 +10,7 @@ namespace Winforms
     // TODO Add custom open and save dialog file.
     struct ColorModeSwitch
     {
-        public enum Mode { GREYSCALED, COLORED, CUSTOM }
+        public enum Mode { GREYSCALED, COLORED, MONO }
 
         public Button component;
         public Mode mode;
@@ -111,7 +111,7 @@ namespace Winforms
             {
                 new ColorModeSwitch(btn_SettingsGreyscaled, ColorModeSwitch.Mode.GREYSCALED),
                 new ColorModeSwitch(btn_SettingsColored, ColorModeSwitch.Mode.COLORED),
-                new ColorModeSwitch(btn_SettingsCustom, ColorModeSwitch.Mode.CUSTOM)
+                new ColorModeSwitch(btn_SettingsMono, ColorModeSwitch.Mode.MONO)
             };
             SetColorModeSelected(colorModes[0]);
             foreach (ColorModeSwitch colorMode in colorModes) { colorMode.component.Click += (s, e) => { SwitchColorMode(colorMode); }; }
@@ -128,7 +128,22 @@ namespace Winforms
             {
                 Bitmap image = (Bitmap)pBox_Input.Image;
                 if (image != null)
-                    pBox_Output.Image = GenerateASCIIImage(GenerateASCIIString(image));
+                {
+                    switch(colorModeSelected.mode)
+                    {
+                        case ColorModeSwitch.Mode.GREYSCALED:
+                            pBox_Output.Image = GenerateASCIIImage(GenerateASCIIString(image), Color.Black);
+                            break;
+                        case ColorModeSwitch.Mode.COLORED:
+                            pBox_Output.Image = GenerateASCIIImage(GenerateASCIIString(image), Color.Black);
+                            break;
+                        case ColorModeSwitch.Mode.MONO:
+                            pBox_Output.Image = GenerateASCIIImage(GenerateASCIIString(image), Color.Green);
+                            break;
+                        default:
+                            break;
+                    }
+                }
                 else
                 {
                     Shake();
@@ -232,10 +247,10 @@ namespace Winforms
             return new ASCIIGenerator() { BlackBG = false } .GenerateASCII(image, width, contrast);
         }
 
-        private Bitmap GenerateASCIIImage(string ascii)
+        private Bitmap GenerateASCIIImage(string ascii, Color color)
         {
             Font font = new Font(cBox_FontName.Text, Int32.Parse(cBox_FontSize.Text));
-            return new ASCIIGenerator().ASCIIToImage(ascii, font, Color.Black);
+            return new ASCIIGenerator().ASCIIToImage(ascii, font, color);
         }
 
         private void Shake()

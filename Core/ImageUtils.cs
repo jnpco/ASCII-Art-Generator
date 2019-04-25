@@ -7,7 +7,7 @@ namespace Core
     /// <summary>
     /// Utility class for image processing.
     /// </summary>
-    class ImageUtils
+    public class ImageUtils
     {
         /// <summary>
         /// Resizes an image to a specified width.
@@ -111,6 +111,25 @@ namespace Core
                 color.G * color.G * 0.587 +
                 color.B * color.B * 0.114
                 );
+        }
+
+        public static Color[] ExtractColors(Bitmap bmp, int width)
+        {
+            Color[] colors = new Color[bmp.Width * bmp.Height];
+            
+            var resized = ImageUtils.ResizeImage(bmp, width);
+            var lockedBitmap = new LockBitmap(resized);
+            lockedBitmap.LockBits();
+
+            for (int y = 0; y < resized.Height; y++)
+            {
+                for (int x = 0; x < resized.Width; x++)
+                {
+                    colors[x + y * resized.Width] = resized.GetPixel(x, y);
+                }
+            }
+            lockedBitmap.UnlockBits();
+            return colors;
         }
     }
 }
