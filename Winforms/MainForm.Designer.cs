@@ -207,6 +207,7 @@
             // 
             this.btn_OutputHTML.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(44)))));
             this.btn_OutputHTML.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_OutputHTML.Enabled = false;
             this.btn_OutputHTML.FlatAppearance.BorderSize = 0;
             this.btn_OutputHTML.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_OutputHTML.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -445,6 +446,7 @@
             // 
             this.btn_SettingsMono.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
             this.btn_SettingsMono.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_SettingsMono.Enabled = false;
             this.btn_SettingsMono.FlatAppearance.BorderSize = 0;
             this.btn_SettingsMono.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_SettingsMono.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -464,6 +466,7 @@
             // 
             this.btn_SettingsColored.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
             this.btn_SettingsColored.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_SettingsColored.Enabled = false;
             this.btn_SettingsColored.FlatAppearance.BorderSize = 0;
             this.btn_SettingsColored.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_SettingsColored.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

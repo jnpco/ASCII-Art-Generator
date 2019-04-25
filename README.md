@@ -12,9 +12,11 @@ Windows GUI is made with Winforms.
 
 [Check out *_demo files to see output.](https://github.com/jnpco/ASCIIfy/tree/master/Demo)
 
-- [ ] Make a web api. Most probably using AWS Lambda.
+- [ ] Refactor and clean code. Review architecture. Otherwise, generating colored images would take too long.
+- [ ] Add loader notification when image is being generated.
 - [ ] Add limits to img sizes.
 - [ ] Add html support.
 - [ ] Add color options for image and html.
 - [ ] Fix aspect ratio.
 - [ ] Rewrite core to c++ and GUI to Electron
+- [ ] Make a web api. Most probably using AWS Lambda.

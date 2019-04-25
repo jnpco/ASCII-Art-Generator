@@ -115,9 +115,8 @@ namespace Core
 
         public static Color[] ExtractColors(Bitmap bmp, int width)
         {
-            Color[] colors = new Color[bmp.Width * bmp.Height];
-            
             var resized = ImageUtils.ResizeImage(bmp, width);
+            var colors = new Color[resized.Width * resized.Height];
             var lockedBitmap = new LockBitmap(resized);
             lockedBitmap.LockBits();
 
@@ -125,7 +124,7 @@ namespace Core
             {
                 for (int x = 0; x < resized.Width; x++)
                 {
-                    colors[x + y * resized.Width] = resized.GetPixel(x, y);
+                    colors[x + y * resized.Width] = lockedBitmap.GetPixel(x, y);
                 }
             }
             lockedBitmap.UnlockBits();
