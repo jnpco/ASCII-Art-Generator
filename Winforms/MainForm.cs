@@ -240,10 +240,14 @@ namespace Winforms
 
             if (!Int32.TryParse(txt_Width.Text, out width))
             {
-                width = pBox_Input.Width;
+                width = 100;
                 txt_Width.Text = width.ToString();
             }
 
+            if(width > 500)
+            {
+                width = 100;
+            }
             return new ASCIIGenerator() { BlackBG = false } .GenerateASCII(image, width, contrast);
         }
 
